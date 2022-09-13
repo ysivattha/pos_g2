@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Hash;
+use Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +31,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
+
 
     /**
      * Create a new controller instance.
@@ -36,4 +44,41 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login()
+    {
+        return view('auth.login');
+    }  
+
+    public function customLogin(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+   
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect('/');
+                        
+        }
+  
+        return redirect("login");
+    }
+     
+
+    // public function authenticate(Request $request)
+    // {
+        
+    //     $username = $request->username;
+    //     $password = $request->password;
+    //     if (Auth::attempt(['username' => $username, 'password' => $password, 'active' => 1])) {
+           
+    //         return redirect()->intended('/');
+    //     }
+    // }
+    // public function username()
+    // {
+    //     return 'username';
+    // }
 }
