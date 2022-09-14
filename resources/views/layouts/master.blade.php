@@ -382,6 +382,39 @@
                                 @endcanview
                             </ul>
                         </li>
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            
+                            <p>
+                                {{__('lb.stock')}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                @canview('item')
+                                <li class="nav-item">
+                                    <a href="{{route('item.index')}}" class="nav-link" id="menu_item">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('lb.item')}}
+                                    </a>
+                                </li>
+                                @endcanview
+                                @canview('role')
+                                <li class="nav-item">
+                                    <a href="{{route('role.index')}}" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('lb.roles')}}
+                                    </a>
+                                </li>
+                                @endcanview
+                            </ul>
+                        </li>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

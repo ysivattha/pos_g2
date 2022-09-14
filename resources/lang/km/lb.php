@@ -361,5 +361,8 @@ return [
     'paraclinical_date' => 'កាលបរិច្ឆេទឯកសារ',
     'document' => 'ឯកសារ',
     'letterhead' => 'ក្បាលសំបុត្រ',
-    'system_code'=>'លេខកូដប្រព័ន្ធ'
+    'system_code'=>'លេខកូដប្រព័ន្ធ',
+
+    'item'=>'មុខទំនិញ',
+    'stock'=>'ឃ្លាំងទំនិញ'
 ];

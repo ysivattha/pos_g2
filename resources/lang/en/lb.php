@@ -362,5 +362,8 @@ return [
     'document' => 'Document',
     'letterhead' => 'Letterhead',
     'system_code'=>'System Code',
-    'hospital'=>'Hospital'
+    'hospital'=>'Hospital',
+
+    'item'=>'Item',
+    'stock'=>'Stock'
 ];

@@ -32,6 +32,10 @@ Route::group(['middleware' =>'auth'] ,function()
     Route::get('role/permission/{id}', 'PermissionController@index')->name('role.permission');
     Route::post('rolepermission/save', "PermissionController@save");
     Route::get('role/export', 'RoleController@export');
+
+    // stock 
+    Route::get('item', 'ItemController@index')->name('item.index');
+
     // company
     Route::get('company', 'CompanyController@index');
     Route::get('company/edit/{id}', 'CompanyController@edit');
@@ -243,6 +247,8 @@ Route::group(['middleware' =>'auth'] ,function()
     Route::get('report/commission', 'ReportController@commission');
     Route::get('report/commission/search', 'ReportController@search_commission');
     Route::get('report/commission/print', 'ReportController@print_commission');
+
+    
 });
 
 // Auth::routes();
