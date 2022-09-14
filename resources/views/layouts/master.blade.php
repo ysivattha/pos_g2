@@ -80,6 +80,376 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item" >
+                            <a href="#" class="nav-link" id="menu_home">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                {{__('lb.dashboard')}}
+                            </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-warehouse"></i>
+                            <p>
+                                ឃ្លាំងទំនិញ{{-- {{__('lb.security')}} --}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Item {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Stock In {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Stock In {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Stock Out {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Stoct Adjust {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Stock Balance {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                          
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                អតិថិជន{{-- {{__('lb.security')}} --}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Customer {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Customer {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+         
+
+                          
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a href="#" class="nav-link" id="menu_home">
+                            <i class="nav-icon fas fa-angle-double-right "></i>
+                            <p>
+                               ផ្នែកលក់ {{-- {{__('lb.dashboard')}} --}}
+                            </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            <p>
+                                អ្នកផ្គត់ផ្គង់{{-- {{__('lb.security')}} --}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Supplier {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Supplier {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+         
+
+                          
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a href="#" class="nav-link" id="menu_home">
+                            <i class="nav-icon fas fa-angle-double-right "></i>
+                            <p>
+                               ផ្នែនទិញចូល {{-- {{__('lb.dashboard')}} --}}
+                            </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-dollar-sign"></i>
+                            <p>
+                                គណនេយ្យ{{-- {{__('lb.security')}} --}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Income {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Cost of goods sold {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Expense {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                             
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      AP - Account Payable
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       AR - Account Receivable     {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                             
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Expense {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                                
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      Type Method
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Asset List     {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-angle-double-right"></i>
+                            <p>
+                                ធនធានមនុស្ស{{-- {{__('lb.security')}} --}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Employee List {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Payroll {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Sex {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                             
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      Position
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Department    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                                
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Training {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                                
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      Training Course
+                                    </a>
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Absent    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Figure Scan    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Attach File    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Attach    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Status    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Pay    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Absent    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a href="#" class="nav-link" id="menu_home">
+                            <i class="nav-icon fas fa-angle-double-right "></i>
+                            <p>
+                               រផាយការណ៍ {{-- {{__('lb.dashboard')}} --}}
+                            </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a href="#" class="nav-link" id="menu_home">
+                            <i class="nav-icon fas fa-cog "></i>
+                            <p>
+                               ការកំណត់ {{-- {{__('lb.dashboard')}} --}}
+                            </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview" id='menu_security'>
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            <p>
+                                {{__('lb.security')}}
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview" id='security_collapse'>
+                               
+                                <li class="nav-item">
+                                    <a href="" class="nav-link" id="menu_user">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('lb.users')}}
+                                    </a>
+                                </li>
+                         
+                             
+                                <li class="nav-item">
+                                    <a href="" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('lb.roles')}}
+                                    </a>
+                                </li>
+                            
+                            </ul>
+                        </li>
+
+
+                        {{-- <li class="nav-item" >
                             <a href="{{url('/')}}" class="nav-link" id="menu_home">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
@@ -409,7 +779,7 @@
                                 </li>
                                 @endcanview
                             </ul>
-                        </li>
+                        </li> --}}
                         <br>
                         <br>
                         <br>
