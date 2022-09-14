@@ -30,89 +30,25 @@
                             <input type="checkbox" onclick="check(this)" value="off">
                         </th>
                         <th>#</th>
-                        <th>{{__('lb.name')}}</th>
-                        <th>{{__('lb.action')}}</th>
+                        <th>{{__('lb.id')}}</th>
+                        <th>{{__('lb.date')}}</th>
+                        <th>{{__('lb.barcode')}}</th>
+                        <th>{{__('lb.ref_name')}}</th>
+                        <th>{{__('lb.product_name')}}</th>
+                        <th>{{__('lb.cost')}}</th>
+                        <th>{{__('lb.price')}}</th>
+                        <th>{{__('lb.unit')}}</th>
+                        <th>{{__('lb.image')}}</th>
+                        <th>{{__('lb.note')}}</th>
+                        <th>{{__('lb.user')}}</th>
+
                     </tr>
                 </thead>
+              
             </table>
         </div>
     </div>
-<!-- create model -->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <form action="uytyut" method="POST" id='create_form' onsubmit="frm_submit(event)">
-          @csrf
-          <input type="hidden" name="tbl" value="roles">
-          <input type="hidden" name="per" value="role">
-          <div class="modal-content">
-                <div class="modal-header bg-success">
-                    <strong class="modal-title">{{__('lb.create_role')}}</strong>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-              <div class="modal-body">
-                <div id="sms">
-                </div>
-                <div class="form-group mb-1">
-                    <label>
-                        {{__('lb.name')}} <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" name="name" class="form-control" required>
-                </div>
-                 
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-save"></i> {{__('lb.save')}}
-                </button>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
-                    onclick="reset('#create_form')">
-                    <i class="fa fa-times"></i> {{__('lb.close')}}
-                </button>
-              </div>
-          </div>
-      </form>
-    </div>
-</div>         
-<!-- edit model -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <form action="uytyut" method="POST" id='edit_form' onsubmit="frm_update(event)">
-          @csrf
-          <input type="hidden" name="tbl" value="roles">
-          <input type="hidden" name="per" value="role">
-          <input type="hidden" name="id" id='eid' value="">
-          <div class="modal-content">
-            <div class="modal-header bg-success">
-                <strong class="modal-title">{{__('lb.edit_role')}}</strong>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            <div id="esms">
-            </div>
-            <div class="form-group mb-1">
-                <label>
-                    {{__('lb.name')}} <span class="text-danger">*</span>
-                </label>
-                <input type="text" name="name" class="form-control" id='ename' required>
-            </div>
-                
-            </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-save"></i> {{__('lb.save')}}
-                </button>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
-                    <i class="fa fa-times"></i> {{__('lb.close')}}
-                </button>
-              </div>
-          </div>
-      </form>
-    </div>
-</div>                  
+          
 @endsection
 
 @section('js')
@@ -131,7 +67,15 @@
                 columns: [
                     {data: 'check', name: 'check', searchable: false, orderable: false},
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
-                    {data: 'rname', name: 'roles.name'},
+                   
+                    {data: 'barcode', name: 'barcode'},
+                    {data: 'ref_name', name: 'ref_name'},
+                    {data: 'product_name', name: 'product_name'},
+                    {data: 'cost', name: 'cost'},
+                    {data: 'price', name: 'price'},
+                    {data: 'unit', name: 'unit'},
+                    {data: 'note', name: 'note'},
+                    
                     {
                         data: 'action', 
                         name: 'action', 

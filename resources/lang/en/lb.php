@@ -365,5 +365,18 @@ return [
     'hospital'=>'Hospital',
 
     'item'=>'Item',
-    'stock'=>'Stock'
+    'stock'=>'Stock',
+
+    'item'=>'Item',
+    'stock'=>'Stock',
+    'date'=>'Date',
+    'barcode'=>'Barcode',
+    'product_name'=>'Product_Name',
+    'ref_name'=>'Ref_name',
+    'cost'=>'Cost',
+    'price'=>'Price',
+    'unit'=>'Unit',
+    'image'=>'Image',
+    'note'=>'Note',
+    'user'=>'User'
 ];
