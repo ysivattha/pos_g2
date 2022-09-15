@@ -400,6 +400,30 @@
                                     </a>
                                 </li>
                                 @endcanview
+                               
+                                <li class="nav-item">
+                                    <a href="{{route('stockin.index')}}" class="nav-link" id="menu_item">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('StockIn')}}
+                                    </a>
+                                </li>
+                               
+                                
+                                <li class="nav-item">
+                                    <a href="{{route('stockout.index')}}" class="nav-link" id="menu_item">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('StockOut')}}
+                                    </a>
+                                </li>
+                              
+                               
+                                <li class="nav-item">
+                                    <a href="{{route('unit.index')}}" class="nav-link" id="menu_item">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                        {{__('lb.unit')}}
+                                    </a>
+                                </li>
+                              
                                 @canview('role')
                                 <li class="nav-item">
                                     <a href="{{route('role.index')}}" class="nav-link" id='menu_role'>

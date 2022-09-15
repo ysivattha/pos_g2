@@ -248,9 +248,18 @@ Route::group(['middleware' =>'auth'] ,function()
     Route::get('report/commission/search', 'ReportController@search_commission');
     Route::get('report/commission/print', 'ReportController@print_commission');
 
-    
+     // stock in
+ Route::get('stockin', 'StockInController@index')->name('stockin.index');
+
+ // stock out
+ Route::get('stockout', 'StockOutController@index')->name('stockout.index');
+  //unit
+  Route::get('unit', 'UnitController@index')->name('unit.index');
+    //stock adjust
+    Route::get('adjust', 'AdjustController@index')->name('adjust.index');
 });
 
+ 
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
