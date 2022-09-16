@@ -27,9 +27,7 @@
        <table class="table table-sm table-bordered datatable" id='cate_table' style="width: 100%">
             <thead>
                 <tr>
-                    <th>
-                        <input type="checkbox" onclick="check(this)" value="off">
-                    </th>
+                   
                     <th>#</th>
                     <th>{{__('lb.category')}}</th>
                     <th>{{__('lb.note')}}</th>

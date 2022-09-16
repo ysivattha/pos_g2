@@ -32,7 +32,7 @@ return [
 
     'setting' => 'Settings', 
     'company_info' => 'Company Info',
-    'category' => 'Medicine Category',
+    'category' => ' Category',
     'categories' => 'Medicine Category',
     'sellers' => 'Sellers',
 
@@ -378,5 +378,13 @@ return [
     'unit'=>'Unit',
     'image'=>'Image',
     'note'=>'Note',
-    'user'=>'User'
+    'user'=>'User',
+    'company_name'=>'Company Name',
+    'contact_name'=>'Contact Name',
+    'type'=>'Type',
+    'address'=>'Address',
+    'supplier'=>'Supplier',
+    'total_with_tax'=>'Total And Tax',
+    'tax'=>'Tax',
+    'rest'=>'Rest',
 ];

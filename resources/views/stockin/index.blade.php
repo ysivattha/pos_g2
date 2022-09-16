@@ -27,11 +27,11 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%">
+       <table class="table table-sm table-bordered" style="width: 100%" id="stock_in_table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <
+                    
                     <th>{{__('lb.supplier')}}</th>
                     <th>{{__('lb.amount')}}</th>
                     <th>{{__('lb.discount')}}</th>
@@ -47,47 +47,6 @@
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
-            <tbody>			
-                <?php
-                    $pagex = @$_GET['page'];
-                    if(!$pagex)
-                        $pagex = 1;
-                    $i = config('app.row') * ($pagex - 1) + 1;
-                    
-                ?>
-                @foreach($ins as $in)
-                    <tr>
-                        <td>{{$i++}}</td>
-                       <td>{{ $in->supplier_id }}</td>
-                       <td>{{ $in->amount }}</td>
-                       <td>{{ $in->discount }}</td>
-                       <td>{{ $in->total }}</td>
-                       <td>{{ $in->tax }}</td>
-                       <td>{{ $in->total_with_tax }}</td>
-                       <td>{{ $in->seller_id }}</td>
-                       <td>{{ $in->paid }}</td>
-                       <td>{{ $in->rest }}</td>
-                       <td>{{ $in->note }}</td>
-                       <td>{{ $in->user_id }}</td>
-                        <td class="text-left">
-                            <a href="#" title="{{__('lb.edit')}}" data-toggle='modal' data-target='#editModal' class='btn btn-success btn-xs'
-                             >
-                                <i class="fa fa-edit"></i>
-                            </a>
-                             @candelete('request')
-                            
-                            <a href="" class="btn btn-danger btn-xs" onclick="return confirm('You want to delete?')" title="Delete">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                            @endcandelete
-                        </td>
-                    </tr>
-                  
-                @endforeach
-             
-            </tbody>
-        </table> <br>
-        {{-- {{$ins->links('pagination::bootstrap-4')}} --}}
         </table>
 	</div>
 </div>
@@ -98,5 +57,79 @@
 @endsection
 
 @section('js')
+<script>
+         
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // get unit
+    var table = $('#stock_in_table').DataTable({
+        responsive: true,
+        autoWidth: false,
+        ajax: {
+            url: "{{ route('stockin.index') }}",
+            type: 'GET'
+        },
+        columns: [
+            {
+                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+            },
+            {
+                data: 'contact_name',
+                name: 'contact_name'
+            },
+            {
+                data: 'amount',
+                name: 'amount'
+            },
+            {
+                data: 'discount',
+                name: 'discount'
+            },
+            {
+                data: 'total',
+                name: 'total'
+            },
+            {
+                data: 'tax',
+                name: 'tax'
+            },
+            {
+                data: 'total_with_tax',
+                name: 'total_with_tax'
+            },
+            {
+                data: 'seller_id',
+                name: 'seller_id'
+            },
 
+            {
+                data: 'paid',
+                name: 'paid'
+            },
+            {
+                data: 'rest',
+                name: 'rest'
+            },
+            {
+                data: 'note',
+                name: 'note'
+            },
+            {
+                data: 'username',
+                name: 'username'
+            },
+           
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ],
+    })
+
+</script>
 @endsection

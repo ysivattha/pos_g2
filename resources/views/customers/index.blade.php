@@ -27,15 +27,17 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="stock_adjust_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="customer_table">
             <thead>
                 <tr>
                     <th>#</th>
                     
                     <th>{{__('lb.date')}}</th>
-                    <th>{{__('lb.item')}}</th>
-                    <th>{{__('lb.qty-rest')}}</th>
-                    <th>{{__('lb.qty-over')}}</th>
+                    <th>{{__('lb.company_name')}}</th>
+                    <th>{{__('lb.contact_name')}}</th>
+                    <th>{{__('lb.phone')}}</th>
+                    <th>{{__('lb.type')}}</th>
+                    <th>{{__('lb.address')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{ __('lb.user') }}</th>
                     <th>{{ __('lb.action') }}</th>
@@ -45,6 +47,9 @@
         </table>
 	</div>
 </div>
+
+
+
 
 @endsection
 
@@ -57,11 +62,11 @@
         }
     });
     // get unit
-    var table = $('#stock_adjust_table').DataTable({
+    var table = $('#customer_table').DataTable({
         responsive: true,
         autoWidth: false,
         ajax: {
-            url: "{{ route('adjust.index') }}",
+            url: "{{ route('customer.index') }}",
             type: 'GET'
         },
         columns: [
@@ -72,28 +77,35 @@
                 data: 'date',
                 name: 'date'
             },
-           
             {
-                data: 'product_name',
-                name: 'product_name'
+                data: 'company_name',
+                name: 'company_name'
             },
             {
-                data: 'qty_rest',
-                name: 'qty_rest'
+                data: 'contact_name',
+                name: 'contact_name'
             },
             {
-                data: 'qty_over',
-                name: 'qty_over'
+                data: 'phone',
+                name: 'phone'
+            },
+            {
+                data: 'type',
+                name: 'type'
+            },
+            {
+                data: 'address',
+                name: 'address'
             },
             {
                 data: 'note',
                 name: 'note'
             },
+
             {
                 data: 'username',
                 name: 'username'
             },
-          
            
             {
                 data: 'action',
