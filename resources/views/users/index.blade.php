@@ -427,6 +427,7 @@
         var form = $('#create_form')[0];
         var formData = new FormData(form);
         evt.preventDefault();
+        console.log(formData);
         $.ajax({
             type: 'POST',
             url: "{{route('user.store')}}",

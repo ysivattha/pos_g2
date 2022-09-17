@@ -77,12 +77,14 @@ function frm_submit(evt)
 {
     evt.preventDefault();
     let data = $(evt.target).serialize();
+
     $.ajax({
         type: 'POST',
         url: burl + '/bulk/save',
         data: data,
         dataType: 'json',
         success: function(sms){
+            console.log(sms);
             if(sms>0)
             {
                 let txt = `<div class='alert alert-success p-2' role='alert'>
@@ -126,6 +128,7 @@ function frm_update(evt)
         data: data,
         dataType: 'json',
         success: function(sms){
+          
             if(sms>0)
             {
                 

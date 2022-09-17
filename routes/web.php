@@ -270,6 +270,9 @@ Route::group(['middleware' => 'auth'], function () {
  Route::get('supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
  //supplier
  Route::get('supplier', 'SupplierController@index')->name('supplier.index');
+
+ Route::post('stockin', 'StockInController@store')->name('stockin.store');
+
 });
 
  

@@ -387,4 +387,6 @@ return [
     'total_with_tax'=>'Total And Tax',
     'tax'=>'Tax',
     'rest'=>'Rest',
+    "create_stock_in"=>"Add Stock In",
+    "supplier"=>"Supplier",
 ];

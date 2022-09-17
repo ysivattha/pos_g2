@@ -19,13 +19,16 @@ class BulkController extends Controller
     {
         $per = $r->per;
         $tbl = $r->tbl;
-        if(!check($per, 'i')){
-            return 0;
-        }
-        $data = $r->except('_token', 'per', 'tbl');
-        $data['created_by'] = Auth::user()->id;
-        $i = DB::table($tbl)->insert($data);
-        return (int)$i;
+        // if(!check($per, 'i')){
+        //     return 0;
+        // }
+    
+        // $data = $r->except('_token', 'per', 'tbl');
+        // $data['created_by'] = Auth::user()->id;
+        // $i = DB::table($tbl)->insert($data);
+        // return (int)$i;
+
+        return response()->json([$tbl]);
     }
     // update item to table
     public function update(Request $r)
