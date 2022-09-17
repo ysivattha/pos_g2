@@ -18,9 +18,9 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <style>
-        .login-page{
+        body{
             height: auto;
-            background: url("{{asset('img/bg.jpg')}}") center center;
+            background-image: url("{{asset('backend/bg.png')}}");
             background-attachment: fixed;
         }
     </style>
@@ -29,7 +29,7 @@
     <div class="login-box mt-5">
         <div class="login-logo">
             <a href="#">
-                <img src="{{asset('img/logo.png')}}" alt="" width="72"> 
+                <img src="{{ asset('backend/bg.png') }}" alt="" width="72"> 
                 <strong class="text-light">Vdoo ERP</strong>
             </a>
         </div>

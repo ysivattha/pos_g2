@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
-use DB;
 use DataTables;
-use Auth;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
     public function __construct()
@@ -16,31 +16,25 @@ class CategoryController extends Controller
             return $next($request);
         });
     }
-    public function index(Request $r)
+
+    // read data
+    public function index()
     {
-        if(!check('category', 'l')){
-            return view('permissions.no');
+        if (request()->ajax()) {
+            $cate = DB::table('category')
+            ->join('users','category.user_id','users.id')
+            ->select('category.*','users.username')
+            ->get();
+            return datatables()->of($cate)
+            ->addIndexColumn()
+            ->addColumn('action', function($cate) {
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $cate->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $cate->id .')"><i class="fa fa-trash"></i> Delete</a>';
+            })->make(true);
         }
         
-        if ($r->ajax()) 
-        {
-            $data = Category::where('active', 1)
-                ->orderBy('id', 'desc');
-            return Datatables::of($data)
-                ->addColumn('check', function($row){
-                    $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
-                    return $input;
-                })
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'categories', 'category');
-                    return $btn;
-                })
-                ->rawColumns(['action', 'check'])
-                ->make(true);
-        }
-        return view('categories.index');
+        return view('category.index');
     }
+  
 
    
 }

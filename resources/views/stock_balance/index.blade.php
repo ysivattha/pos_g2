@@ -27,24 +27,30 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="stock_adjust_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="balance_table">
             <thead>
                 <tr>
                     <th>#</th>
                     
                     <th>{{__('lb.date')}}</th>
                     <th>{{__('lb.item')}}</th>
-                    <th>{{__('lb.qty-rest')}}</th>
-                    <th>{{__('lb.qty-over')}}</th>
+                    <th>{{__('lb.Qty-Begin')}}</th>
+                    <th>{{__('lb.Qty-Add')}}</th>
+                    <th>{{__('lb.qty_minus')}}</th>
+                    <th>{{__('lb.qty_balance')}}</th>
                     <th>{{__('lb.note')}}</th>
-                    <th>{{ __('lb.user') }}</th>
+                   
+                    <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
-          
+           
         </table>
 	</div>
 </div>
+
+
+
 
 @endsection
 
@@ -57,11 +63,11 @@
         }
     });
     // get unit
-    var table = $('#stock_adjust_table').DataTable({
+    var table = $('#balance_table').DataTable({
         responsive: true,
         autoWidth: false,
         ajax: {
-            url: "{{ route('adjust.index') }}",
+            url: "{{ route('balance.index') }}",
             type: 'GET'
         },
         columns: [
@@ -78,12 +84,20 @@
                 name: 'product_name'
             },
             {
-                data: 'qty_rest',
-                name: 'qty_rest'
+                data: 'qty_begin',
+                name: 'qty_begin'
             },
             {
-                data: 'qty_over',
-                name: 'qty_over'
+                data: 'qty_add',
+                name: 'qty_add'
+            },
+            {
+                data: 'qty_minus',
+                name: 'qty_minus'
+            },
+            {
+                data: 'qty_balance',
+                name: 'qty_balance'
             },
             {
                 data: 'note',

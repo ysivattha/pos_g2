@@ -20,11 +20,19 @@ class AdjustController extends Controller
     }
     public function index()
     {
-        $data['stockadjust'] = DB::table('stock_adjust')
-        ->join('users','stock_adjust.user_id','users.id')
-        ->join('item','stock_adjust.item_id','item.id')
-        ->select('stock_adjust.*','users.username','item.product_name','item.barcode')
-        ->get();
-        return view('stockadjust.index',$data);
+        if (request()->ajax()) {
+           $adjust = DB::table('stock_adjust')
+           ->join('item','stock_adjust.item_id','item.id')
+           ->join('users','stock_adjust.user_id','users.id')
+           ->select('stock_adjust.*','users.username','item.barcode','item.product_name')
+           ->get();
+            return datatables()->of($adjust)
+            ->addIndexColumn()
+            ->addColumn('action', function($adjust) {
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $adjust->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $adjust->id .')"><i class="fa fa-trash"></i> Delete</a>';
+            })->make(true);
+        }
+        
+        return view('stockadjust.index');
     }
 }

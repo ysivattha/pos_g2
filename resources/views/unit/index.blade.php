@@ -27,7 +27,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%">
+       <table class="table table-sm table-bordered" style="width: 100%" id="unit_table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -38,46 +38,55 @@
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
-            <tbody>			
-                <?php
-                    $pagex = @$_GET['page'];
-                    if(!$pagex)
-                        $pagex = 1;
-                    $i = config('app.row') * ($pagex - 1) + 1;
-                    
-                ?>
-                @foreach($unit as $u)
-                    <tr>
-                        <td>{{$i++}}</td>
-                        <td>{{ $u->unit }}</td>
-                       <td>{{ $u->note }}</td>
-                       <td>{{ $u->username }}</td>
-                      
-                        <td class="text-left">
-                            <a href="#" title="{{__('lb.edit')}}" data-toggle='modal' data-target='#editModal' class='btn btn-success btn-xs'
-                             >
-                                <i class="fa fa-edit"></i>
-                            </a>
-                             @candelete('request')
-                            
-                            <a href="" class="btn btn-danger btn-xs" onclick="return confirm('You want to delete?')" title="Delete">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                            @endcandelete
-                        </td>
-                    </tr>
-                  
-                @endforeach
-             
-            </tbody>
-        </table> <br>
-        {{-- {{$ins->links('pagination::bootstrap-4')}} --}}
+            
         </table>
+       
 	</div>
 </div>
 
 @endsection
 
 @section('js')
+<script>
+         
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // get unit
+    var table = $('#unit_table').DataTable({
+        responsive: true,
+        autoWidth: false,
+        ajax: {
+            url: "{{ route('unit.index') }}",
+            type: 'GET'
+        },
+        columns: [
+            {
+                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+            },
+            {
+                data: 'unit',
+                name: 'unit'
+            },
+            {
+                data: 'note',
+                name: 'note'
+            },
+            {
+                data: 'username',
+                name: 'username'
+            },
+           
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ],
+    })
 
+</script>
 @endsection

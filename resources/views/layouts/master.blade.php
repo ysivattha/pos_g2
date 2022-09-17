@@ -99,44 +99,51 @@
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="{{ route('item.index') }}" class="nav-link" id="menu_user">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Item {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stockin.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock In {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
-                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Stock In {{-- {{__('lb.roles')}} --}}
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stockout.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock Out {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('adjust.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Stoct Adjust {{-- {{__('lb.roles')}} --}}
+                                       Stock Adjust {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('balance.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock Balance {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('category.index') }}" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      Category {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('unit.index') }}" class="nav-link" id='menu_role'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Unit {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
                           
@@ -154,14 +161,14 @@
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="{{ route('customer.index') }}" class="nav-link" id="menu_user">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Customer {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('type.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Customer {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -193,14 +200,14 @@
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="{{ route('supplier.index') }}" class="nav-link" id="menu_user">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Supplier {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('supplier-type.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Supplier {{-- {{__('lb.roles')}} --}}
                                     </a>
