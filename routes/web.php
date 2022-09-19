@@ -272,6 +272,7 @@ Route::group(['middleware' => 'auth'], function () {
  Route::get('supplier', 'SupplierController@index')->name('supplier.index');
 
  Route::post('stockin', 'StockInController@store')->name('stockin.store');
+ Route::post('stockout', 'StockOutController@store')->name('stockout.store');
 
 });
 

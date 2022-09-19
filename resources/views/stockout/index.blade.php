@@ -11,15 +11,19 @@
 
     <div class="row">
     <div class="col-md-2">
-    @cancreate('item')
+    {{-- @cancreate('item')
     <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal' id='btnCreate'>
         <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
     </button>
-    @endcancreate
+    @endcancreate --}}
+
+    <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal' id='btnCreate'>
+        <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
+    </button>
 </div>
 
 
-</form>
+
 </div>  
 </div>   
 <div class="card">
@@ -52,198 +56,239 @@
 	</div>
 </div>
 
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <form method="POST" id='create_form'  accept="{{ route('stockin.store') }}" >
-          @csrf
- 
-          <input type="hidden" name="tbl" value="stock_in">
-          <input type="hidden" name="per" value="stock_in">
-          <div class="modal-content">
-            <div class="modal-header bg-success">
-                <strong class="modal-title">{{ __('lb.create_stock_in') }}</strong>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-              <div class="modal-body">
-
-
-                <div id="sms">
+@section('modal')
+    <div class="modal fade " id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+        <form method="POST" id='create_form'  action="{{ route('stockout.store') }}" >
+            @csrf
+    
+            <input type="hidden" name="tbl" value="sto_stock_out">
+            <input type="hidden" name="per" value="sto_stock_out">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <strong class="modal-title">{{ __('lb.create_stock_out') }}</strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-
-                <div class="row d-flex justify-content-between">
-                    <div class="col-md-6">
-                                <div class="form-group row">
-                        
-                                    <label class="col-md-3 " for="supplier_id">
-                                        {{__('lb.supplier')}} <span class="text-danger">*</span>
-                                    </label>
-                                
-                                    <div class="col-md-9">
-                                        <select name="supplier_id" id="supplier_id" class="chosen-select">
-                                            <option value="">{{__('lb.select_one')}}</option>
-                                            <option value="1">123</option>
-                                            @foreach ($suppliers as $s)
-                                            <option value="{{ $s->id }}">{{ $s->company_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                    
-                                    <label class="col-md-3" for="amount">
-                                        {{__('lb.amount')}} <span class="text-danger">*</span>
-                                    </label>
-                        
-                                    <div class="col-md-9">
-                                        <input type="number" min="0"  step="any" name="amount" id="amount" class="form-control input-xs" required>
-                                    </div>
-                            </div>
-
-                            <div class="form-group row">
-                            
-                                    <label class="col-md-3" for="discount">
-                                        {{__('lb.discount')}}  <span class="text-danger">*</span>
-                                    </label>
-                            
-                                    <div class="col-md-9">
-                                        <input type="number" min="0"  step="any" name="discount" class="form-control input-xs">
-                                    </div>
-                            </div>
-
-                            
-                            <div class="form-group row">
-                            
-                                <label class="col-md-3" for="total">
-                                    {{__('lb.total')}} 
-                                </label>
-                        
-                                <div class="col-md-9">
-                                    <input type="number" min="0"  step="any" name="total" id="total" class="form-control input-xs" required>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-                        
-                                <label class="col-md-3" for="tax">
-                                    {{__('lb.tax')}} 
-                                </label>
-                        
-                                <div class="col-md-9">
-                                    <input type="number" min="0"  step="any" name="tax"  id="tax" class="form-control input-xs" required>
-                                </div>
-            
-                            </div>
-
-                            
-
-                            <div class="form-group row">
-                            
-                                <label class="col-md-3" for="total_with_tax">
-                                    {{__('lb.total_with_tax')}} 
-                                </label>
-                        
-                                <div class="col-md-9">
-                                    <input type="number" min="0"  step="any" name="total_with_tax" id="total_with" class="form-control input-xs" required>
-                                </div>
-
-                            </div>
+                <div class="modal-body">
 
 
-
-
-
-
+                    <div id="sms">
                     </div>
 
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group mb-2">
+                        
+                                <label for="date">
+                                    {{__('lb.date')}} <span class="text-danger">*</span>
+                                </label>
+                            
+                                <input type="date"  name="date" id="date" class="form-control input-xs" required>
+                            
+                            </div>
+                                <div class="form-group mb-2">
+                        
+                                    <label for="customer">
+                                        {{__('lb.customer')}} <span class="text-danger">*</span>
+                                    </label>
+                                
+                               
+                                    <select name="customer" id="customer" class="chosen-select">
+                                        <option value="">{{__('lb.select_one')}}</option>
+                                        <option value="1">123</option>
+                                        @foreach ($customers as $cus)
+                                        <option value="{{ $cus->id }}">{{ $cus->contact_name }}</option>
+                                        @endforeach
+                                    </select>
+                                
+                                </div>
 
+                                  <div class="form-group mb-2">
+                
+                                        <label  for="amount">
+                                            {{__('lb.amount')}} <span class="text-danger">*</span>
+                                        </label>                           
+                                        <input type="number" min="0"  step="any" name="amount" id="amount" class="form-control input-xs" required>
+                                        
+                                    </div>
 
-                    <div class="col-md-6 ">
-                        <div class="form-group row">
-                 
-                            <label class="col-md-3 text-right " for="seller_id">
-                                {{__('lb.seller')}} 
-                            </label>
-                      
-                            <div class="col-md-9">
-                                <select name="seller_id" id="seller_id" class="chosen-select">
-                                    <option value="">{{__('lb.select_one')}}</option>
+                                    <div class="form-group mb-2">
+                        
+                                        <label  for="discount">
+                                            {{__('lb.discount')}}  <span class="text-danger">*</span>
+                                        </label>
+                                
                                     
-                                    @foreach ($suppliers as $s)
-                                     <option value="{{ $s->id }}">{{ $s->company_name }}</option>
+                                        <input type="number" min="0"  step="any" name="discount" class="form-control input-xs">
+                                    
+                                    </div>
+
+                                                        
+                                    <div class="form-group mb-2">
+                                        
+                                            <label  for="total">
+                                                {{__('lb.total')}} 
+                                            </label>
+                                    
+                                      
+                                            <input type="number" min="0"  step="any" name="total" id="total" class="form-control input-xs" required>
+                                        
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                    
+                                        <label  for="tax">
+                                            {{__('lb.tax')}} 
+                                        </label>
+                                
+                                      
+                                            <input type="number" min="0"  step="any" name="tax"  id="tax" class="form-control input-xs" required>
+                                        
+                
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                    
+                                        <label  for="total_with_tax">
+                                            {{__('lb.total_with_tax')}} 
+                                        </label>
+                                
+                                        
+                                            <input type="number" min="0"  step="any" name="total_with_tax" id="total_with_tax" class="form-control input-xs" required>
+                                       
+                
+                                    </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group mb-2">
+                    
+                                <label  for="exchange_rate">
+                                    {{__('lb.exchange_rate')}} 
+                                </label>
+
+                                <select name="exchange_rate" id="exchange_rate" class="chosen-select">
+                                    <option value="">{{__('lb.select_one')}}</option>
+                                    <option value="1">123</option>
+                                    @foreach ($exchanges as $ex)
+                                    <option class="{{ $ex->is_active==1?'bg-info':'' }}" value="{{ $ex->id }}">${{ $ex->dollar }}={{ $ex->khr }}</option>
                                     @endforeach
                                 </select>
+                        
+                               
+                                  
+                               
+       
                             </div>
-        
-                         </div>
-        
-                         <div class="form-group row">
-                         
-                            <label class="col-md-3 text-right" for="paid">
-                                {{__('lb.paid')}} 
-                            </label>
-                      
-                            <div class="col-md-9">
-                                <input type="number"  name="paid" id="paid" class="form-control input-xs" required>
-                            </div>
-        
-                         </div>
-        
-                         <div class="form-group row">
-                         
-                            <label class="col-md-3 text-right" for="rest">
-                                {{__('lb.rest')}} 
-                            </label>
-                      
-                            <div class="col-md-9">
-                                <input type="number"  name="rest" id="rest" class="form-control input-xs" >
-                            </div>
-        
-                         </div>
-        
-                         <div class="form-group row">
-                         
-                            <label class="col-md-3 text-right" for="note">
-                                {{__('lb.note')}} 
-                            </label>
-                      
-                            <div class="col-md-9">
-                                <input type="text"  name="note" id="note" class="form-control input-xs" >
-                            </div>
-        
-                         </div>
-                     </div>
-                </div>
 
+                            
+                            <div class="form-group mb-2">
+                    
+                                <label  for="amount_khr">
+                                    {{__('lb.amount')}} (រៀល)
+                                </label>
+                        
+                                <input type="number"  name="amount_khr" id="amount_khr" class="form-control input-xs" >
+                               
+       
+                            </div>
+                            <div class="form-group mb-2">
+                    
+                                <label  for="seller">
+                                    {{__('lb.seller')}} 
+                                </label>
+                        
+                         
+                                    <select name="seller" id="seller" class="chosen-select">
+                                        <option value="">{{__('lb.select_one')}}</option>
+                                        <option value="1">123</option>
+                                        @foreach ($emps as $emp)
+                                        <option value="{{ $emp->id }}">123</option>
+                                        @endforeach
+                                    </select>
+                               
+        
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                    <label  for="paid">
+                                        {{__('lb.paid')}} 
+                                    </label>
+                            
+                                    
+                                        <input type="number"  name="paid" id="paid" class="form-control input-xs" required>
+                                    
+
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                <label  for="rest">
+                                    {{__('lb.rest')}} 
+                                </label>
+                        
+                                
+                                    <input type="number"  name="rest" id="rest" class="form-control input-xs" >
+                                
+        
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                <label  for="note">
+                                    {{__('lb.note')}} 
+                                </label>
+                        
+                               
+                                    <input type="text"  name="note" id="note" class="form-control input-xs" >
+                               
+       
+                            </div>
+
+
+
+                        </div>
+                    </div>      
            
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm" >
-                    <i class="fa fa-save"></i> {{__('lb.save')}}
-                </button>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
-                    onclick="reset('#create_form')">
-                    <i class="fa fa-times"></i> {{__('lb.close')}}
-                </button>
-              </div>
-          </div>
-      </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" >
+                        <i class="fa fa-save"></i> {{__('lb.save')}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
+                        onclick="reset('#create_form')">
+                        <i class="fa fa-times"></i> {{__('lb.close')}}
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
     </div>
-</div>
+@endsection
+
 
 @endsection
 
 @section('js')
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 <script>
-         
-    $.ajaxSetup({
+
+$(document).ready(function () {
+        $(".chosen-select").chosen({width: "100%"});
+        $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+
     // get unit
     var table = $('#stock_out_table').DataTable({
         responsive: true,
@@ -337,7 +382,7 @@
                 </div>`;
                 $('#sms').html(txt);
                 $("#create_form")[0].reset();
-                $('#stock_in_table').DataTable().ajax.reload();
+                $('#stock_out_table').DataTable().ajax.reload();
                 // update all chosen select
                 $('#create_form .chosen-select').trigger("chosen:updated");
                 setTimeout(function() { 
@@ -361,6 +406,14 @@
         }
     });
 });
+
+});
+
+function totalOnchange()
+{
+    var totalTax = $('#total_with_tax').val();
+    alert(totalTax);
+};
        
 
 </script>

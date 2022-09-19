@@ -381,6 +381,8 @@ return [
     'total_with_tax'=>'សរុបគិតរួមទាំងពន្ធ',
     'seller'=>'អ្នកលក់',
     'rest'=>'នៅខ្វះ',
+    'create_stock_out'=>'នាំចេញ',
+    'exchange_rate'=>'អត្រាប្តូរប្រាក់'
 
     
 ];

@@ -16,6 +16,10 @@
         <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
     </button>
     @endcancreate
+{{-- 
+    <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal' id='btnCreate'>
+        <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
+    </button> --}}
 </div>
 
 
@@ -60,8 +64,8 @@
         <form method="POST" id='create_form'  action="{{ route('stockin.store') }}" >
             @csrf
     
-            <input type="hidden" name="tbl" value="stock_in">
-            <input type="hidden" name="per" value="stock_in">
+            <input type="hidden" name="tbl" value="sto_stock_in">
+            <input type="hidden" name="per" value="sto_stock_in">
             <div class="modal-content">
                 <div class="modal-header bg-success">
                     <strong class="modal-title">{{ __('lb.create_stock_in') }}</strong>
@@ -79,12 +83,12 @@
                         <div class="col-sm-6">
                                 <div class="form-group mb-2">
                         
-                                    <label for="supplier_id">
+                                    <label for="supplier">
                                         {{__('lb.supplier')}} <span class="text-danger">*</span>
                                     </label>
                                 
                                
-                                    <select name="supplier_id" id="supplier_id" class="chosen-select">
+                                    <select name="supplier" id="supplier" class="chosen-select">
                                         <option value="">{{__('lb.select_one')}}</option>
                                         <option value="1">123</option>
                                         @foreach ($suppliers as $s)
@@ -157,16 +161,16 @@
                         <div class="col-sm-6">
                             <div class="form-group mb-2">
                     
-                                <label  for="seller_id">
+                                <label  for="seller">
                                     {{__('lb.seller')}} 
                                 </label>
                         
                          
-                                    <select name="seller_id" id="seller_id" class="chosen-select">
+                                    <select name="seller" id="seller" class="chosen-select">
                                         <option value="">{{__('lb.select_one')}}</option>
                                         <option value="1">123</option>
-                                        @foreach ($suppliers as $s)
-                                        <option value="{{ $s->id }}">{{ $s->company_name }}</option>
+                                        @foreach ($emps as $emp)
+                                        <option value="{{ $emp->id }}">123</option>
                                         @endforeach
                                     </select>
                                

@@ -21,10 +21,10 @@ class StockInController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $stock = DB::table('stock_in')
-            ->join('users','stock_in.user_id','users.id')
-            ->join('supplier','stock_in.supplier_id','supplier.id')
-            ->select('stock_in.*','users.username','supplier.contact_name')
+            $stock = DB::table('sto_stock_in')
+            ->join('users','sto_stock_in.user','users.id')
+            ->join('sup_supplier','sto_stock_in.supplier','sup_supplier.id')
+            ->select('sto_stock_in.*','users.username','sup_supplier.contact_name')
             ->get();
             return datatables()->of($stock)
             ->addIndexColumn()
@@ -33,7 +33,10 @@ class StockInController extends Controller
             })->make(true);
         }
 
-        $data['suppliers'] = DB::table('supplier')->get();
+        $data['suppliers'] = DB::table('sup_supplier')->get();
+        $data['emps']=DB::table('hr_employee')
+        ->where('is_active',1)->get();
+
         
         
         return view('stockin.index' , $data);
@@ -45,13 +48,13 @@ class StockInController extends Controller
         $tbl = $r->tbl;
 
         $data = Validator::make($r->all(), [
-            'supplier_id' => 'required',
+            'supplier' => 'required',
             'amount' => 'required',
             'discount' => 'required',
             'total' => 'required',
             'tax'=>'required',
             'total_with_tax'=>'required',
-            'seller_id'=>'required',
+            'seller'=>'required',
             'paid'=>'required',
             
 
@@ -64,7 +67,8 @@ class StockInController extends Controller
         // }
     
         $data = $r->except('_token', 'per', 'tbl');
-        $data['user_id'] = Auth::user()->id;
+        $data['user'] = Auth::user()->id;
+        $data['is_active'] = 1;
         $data['datetime']=now();
         $i = DB::table($tbl)->insert($data);
             return (int)$i;
