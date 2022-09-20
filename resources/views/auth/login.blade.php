@@ -30,7 +30,7 @@
         <div class="login-logo">
             <a href="#">
                 <img src="{{ asset('backend/bg.png') }}" alt="" width="72"> 
-                <strong class="text-light">Vdoo ERP</strong>
+                <strong class="text-light">CMS System</strong>
             </a>
         </div>
         <div class="card">

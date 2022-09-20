@@ -21,9 +21,9 @@ class ItemController extends Controller
         if(!check('item', 'l')){
             return view('permissions.no');
         }
-        $data['item'] = DB::table('item')
+        $data['item'] = DB::table('sto_item')
         ->join('sections','item.id','sections.id')
-        ->select('item.*', 'sections.name as sname')
+        ->select('sto_item.*', 'sections.name as sname')
         ->get();
         return view('items.index',$data);
     

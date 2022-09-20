@@ -131,10 +131,8 @@ class UserController extends Controller
         $id = Auth::user()->id;
         $data['user'] = DB::table("users")
             ->join('roles', 'users.role_id', 'roles.id')
-            ->leftJoin('positions', 'users.position_id', 'positions.id')
-            ->leftJoin('departments', 'users.department_id', 'departments.id')
             ->where('users.id', $id)
-            ->select('users.*', 'roles.name as rname', 'departments.name as dname', 'positions.name as pname')
+            ->select('users.*', 'roles.name as rname')
             ->first();
         return view("users.profile", $data);
     }

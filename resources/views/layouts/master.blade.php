@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title', config('app.name')) | Vdoo ERP</title>
+    <title>@yield('title', config('app.name')) | CMS System</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -68,7 +68,7 @@
             <!-- Brand Logo -->
             <a href="{{url('/')}}" class="brand-link">
             <img src="{{asset('img/logo.png')}}" alt="" class="brand-image img-circle elevation-3">
-            <span class="brand-text font-weight-bold">Vdoo ERP</span>
+            <span class="brand-text font-weight-bold">CMS System</span>
             </a>
 
             <!-- Sidebar -->
@@ -836,7 +836,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            Copyright &copy; {{date('Y')}} <a href="#">Vdoo ERP</a>
+            Copyright &copy; {{date('Y')}} <a href="#">CMS System</a>
             <div class="float-right d-none d-sm-inline-block">
                 Version 1.0.0
             </div>

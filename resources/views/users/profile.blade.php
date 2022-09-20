@@ -64,14 +64,8 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-5">
                 
-                <div class="form-group mb-1">
-                    <label >{{__('lb.positions')}} : {{$user->pname}}</label>
-                    <p></p> 
-                </div>
-                <div class="form-group mb-1">
-                    <label >{{__('lb.departments')}} : {{$user->dname}}</label>
-                    <p></p> 
-                </div>
+                
+                
                 <div class="form-group mb-1">
                     <label >{{__('lb.role')}} : {{$user->rname}}</label>
                 </div>
