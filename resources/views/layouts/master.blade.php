@@ -88,7 +88,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item has-treeview" id='menu_security'>
+                        <li class="nav-item has-treeview" id='menu_stock'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-warehouse"></i>
                             <p>
@@ -99,7 +99,7 @@
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('item.index') }}" class="nav-link" id="menu_user">
+                                    <a href="{{ route('product.index') }}" class="nav-link" id="menu_item">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Item {{-- {{__('lb.users')}} --}}
                                     </a>

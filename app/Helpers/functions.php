@@ -32,19 +32,29 @@ function btn_actions($id, $tbl, $per)
 {
     $del = '';
     $edit = '';
-    if(check($per, 'd'))
-    {
-        $del = "<button type='button' onclick='remove({$id}, this)' table='{$tbl}' per='{$per}' 
-            class='btn btn-danger btn-xs' title='Delete'>
-            <i class='fa fa-trash'></i>
-        </button>";
-    }
-    if(check($per, 'u'))
-    {
-        $edit = "<button type='button' onclick='edit({$id}, this)' table='{$tbl}' per='{$per}' data-toggle='modal'  
-            data-target='#editModal' class='btn btn-success btn-xs mr-1' title='Edit'>
-            <i class='fa fa-edit'></i>
-        </button>";
-    }
+    $del = "<button type='button' onclick='remove({$id}, this)' table='{$tbl}' per='{$per}' 
+    class='btn btn-danger btn-xs' title='Delete'>
+    <i class='fa fa-trash'></i>
+    </button>";
+
+    $edit = "<button type='button' onclick='edit({$id}, this)' table='{$tbl}' per='{$per}' data-toggle='modal'  
+    data-target='#editModal' class='btn btn-success btn-xs mr-1' title='Edit'>
+    <i class='fa fa-edit'></i>
+    </button>";
+
+    // if(check($per, 'd'))
+    // {
+    //     $del = "<button type='button' onclick='remove({$id}, this)' table='{$tbl}' per='{$per}' 
+    //         class='btn btn-danger btn-xs' title='Delete'>
+    //         <i class='fa fa-trash'></i>
+    //     </button>";
+    // }
+    // if(check($per, 'u'))
+    // {
+    //     $edit = "<button type='button' onclick='edit({$id}, this)' table='{$tbl}' per='{$per}' data-toggle='modal'  
+    //         data-target='#editModal' class='btn btn-success btn-xs mr-1' title='Edit'>
+    //         <i class='fa fa-edit'></i>
+    //     </button>";
+    // }
     return $edit . $del;
 }

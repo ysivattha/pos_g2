@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -273,6 +274,8 @@ Route::group(['middleware' => 'auth'], function () {
 
  Route::post('stockin', 'StockInController@store')->name('stockin.store');
  Route::post('stockout', 'StockOutController@store')->name('stockout.store');
+
+ Route::get('/product', [ProductController::class,'index'])->name('product.index');
 
 });
 
