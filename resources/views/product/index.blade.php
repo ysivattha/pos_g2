@@ -61,8 +61,7 @@
         $(document).ready(function () {
             $("#sidebar li a").removeClass("active");
             $("#menu_stock>a").addClass("active");
-            $("#menu_stock
-            ").addClass("menu-open");
+            $("#menu_stock").addClass("menu-open");
             $("#menu_item").addClass("myactive");
             $.ajaxSetup({
         headers: {
