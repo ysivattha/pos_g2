@@ -32,11 +32,10 @@ class ProductController extends Controller
         {
 
             $data = \DB::table('sto_item')
-            ->join('sto_category' , 'sto_item.category','sto_category.id')
-            ->join('users','sto_item.user','users.id')
+            ->join('sto_category' , 'sto_item.category_id','sto_category.id')
+            ->join('users','sto_item.user_id','users.id')
             ->join('acc_income_type','sto_item.income_type_id','acc_income_type.id')
-            ->join('sto_unit','sto_item.unit','sto_unit.id')
-            
+            ->join('sto_unit','sto_item.unit_id','sto_unit.id')
             ->select('sto_item.*','sto_category.category as cat_name','users.first_name as fname','acc_income_type.in_type as income','sto_unit.unit as unit_name')
             ->get();
             return datatables()->of($data)
