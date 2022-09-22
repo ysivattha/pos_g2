@@ -20,23 +20,19 @@
     <style>
         body{
             height: auto;
-            background-image: url("{{asset('backend/bg.png')}}");
+            background-image: url("{{asset('img/bg.png')}}");
             background-attachment: fixed;
         }
     </style>
 </head>
 <body class="hold-transition login-page">
     <div class="login-box mt-5">
-        <div class="login-logo">
-            <a href="#">
-                <img src="{{ asset('backend/bg.png') }}" alt="" width="72"> 
-                <strong class="text-light">CMS System</strong>
-            </a>
-        </div>
+        
         <div class="card">
             <div class="card-body login-card-body">
+                
                 <p class="login-box-msg text-success font-weight-bold" style="border-bottom: 1px solid #ddd">
-                    LOGIN TO CONTINUE
+                    <img src="{{asset('img/logo_login.png')}}" alt="" width="150">
                 </p>
                 @if(count($errors)>0)
                     <div class="alert alert-warning" role="alert">
