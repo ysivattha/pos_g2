@@ -20,17 +20,15 @@
     <style>
         body{
             height: auto;
-            background-image: url("{{asset('img/bg.png')}}");
+            background-image: url("{{asset('img/logo_login.png')}}");
             background-attachment: fixed;
         }
     </style>
 </head>
 <body class="hold-transition login-page">
     <div class="login-box mt-5">
-        
         <div class="card">
-            <div class="card-body login-card-body">
-                
+            <div class="card-body login-card-body">                
                 <p class="login-box-msg text-success font-weight-bold" style="border-bottom: 1px solid #ddd">
                     <img src="{{asset('img/logo_login.png')}}" alt="" width="150">
                 </p>
