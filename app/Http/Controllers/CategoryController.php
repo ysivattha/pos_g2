@@ -28,10 +28,12 @@ class CategoryController extends Controller
             return datatables()->of($cate)
             ->addIndexColumn()
             ->addColumn('action', function($cate) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $cate->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $cate->id .')"><i class="fa fa-trash"></i> Delete</a>';
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" 
+                onclick="editData('. $cate->id .')"><i class="fa fa-edit"></i> Edit</a>' . 
+                ' <a class="btn btn-danger btn-xs rounded-0 text-white" 
+                onclick="deleteData('. $cate->id .')"><i class="fa fa-trash"></i> Delete</a>';
             })->make(true);
         }
-        
         return view('category.index');
     }
   

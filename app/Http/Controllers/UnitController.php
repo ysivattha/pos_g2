@@ -20,18 +20,27 @@ class UnitController extends Controller
 
     public function index()
     {
-        if (request()->ajax()) {
-            $unit = DB::table('unit')
-            ->join('users','unit.user_id','users.id')
-            ->select('unit.*','users.username')
+        if (request()->ajax()) 
+        {
+            $data = \DB::table('sto_unit')
+            ->where('sto_unit.is_active',1)
+            ->leftjoin('users','sto_unit.user_id','users.id')
+            ->select('sto_unit.*','users.first_name as fname','users.last_name as lname')
             ->get();
-            return datatables()->of($unit)
-            ->addIndexColumn()
-            ->addColumn('action', function($unit) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $unit->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $unit->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
+            return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sto_unit', 'sto_unit');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
         }
-        
         return view('unit.index');
     }
+
+
+
+
 }

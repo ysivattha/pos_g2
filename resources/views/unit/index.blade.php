@@ -47,46 +47,50 @@
 @endsection
 
 @section('js')
-<script>
-         
-    $.ajaxSetup({
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
+	<script>
+        $(document).ready(function () {
+            $("#sidebar li a").removeClass("active");
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_unit").addClass("myactive");
+            $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    });
-    // get unit
-    var table = $('#unit_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('unit.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'unit',
-                name: 'unit'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
+        });
 
-</script>
+			var table = $('#dataTable').DataTable({
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                // scrollX: true,
+                ajax: {
+                    url: "{{ route('unit.index') }}",
+                    type: 'GET'
+                },
+                columns: [
+                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                    {data: 'unit', name: 'unit'},
+                    {data: 'note', name: 'note'},
+                    {
+                        data: "fname",
+                        render: function (data, type, row) {
+                        return row.fname + ' ' + row.lname ;
+                        }
+                    },
+                    {
+                        data: 'action', 
+                        name: 'action', 
+                        orderable: false, 
+                        searchable: false
+                    },
+                ],
+                "initComplete" : function () {
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
+                        
+                    });
+        });
+    </script>
 @endsection

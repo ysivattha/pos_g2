@@ -129,7 +129,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    // get unit
+    // get category
     var table = $('#cate_table').DataTable({
         responsive: true,
         autoWidth: false,
@@ -164,25 +164,6 @@
     })
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
