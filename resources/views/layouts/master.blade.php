@@ -134,7 +134,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('category.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('cat.index') }}" class="nav-link" id='menu_cat'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Category {{-- {{__('lb.roles')}} --}}
                                     </a>
