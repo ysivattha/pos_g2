@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.item')}}
+    {{__('lb.category')}}
 @endsection
 @section('header')
-    {{__('lb.item')}}
+    {{__('lb.category')}}
 @endsection
 @section('content')  
     <div class="toolbox pt-1 pb-1">
-        @cancreate('item')
+        {{-- @cancreate('item')
         <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal'>
             <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
         </button>
@@ -17,7 +17,7 @@
             table='roles' permission='role' token="{{csrf_token()}}">
             <i class="fa fa-trash"></i> {{__('lb.delete')}}
         </button>
-        @endcandelete
+        @endcandelete --}}
     </div>   
     <div class="card">
         <div class="card-body">
@@ -31,19 +31,12 @@
                         </th> --}}
                        
                         <th>{{__('lb.id')}}</th>
-                        <th>{{__('lb.date')}}</th>
-                        {{-- <th>{{__('lb.image')}}</th> --}}
-                        <th>{{__('lb.barcode')}}</th>
-                        <th>{{__('lb.ref_name')}}</th>
-                        <th>{{__('lb.product_name')}}</th>
                         <th>{{__('lb.category')}}</th>
-                        <th>{{__('lb.cost')}}</th>
-                        <th>{{__('lb.price')}}</th>
-                        <th>{{__('lb.unit')}}</th>
-                        <th>{{__('lb.income')}}</th>
+                        {{-- <th>{{__('lb.image')}}</th> --}}
                         <th>{{__('lb.note')}}</th>
                         <th>{{__('lb.user')}}</th>
                         <th>{{__('lb.action')}}</th>
+
 
                     </tr>
                 </thead>
@@ -62,7 +55,7 @@
             $("#sidebar li a").removeClass("active");
             $("#menu_stock>a").addClass("active");
             $("#menu_stock").addClass("menu-open");
-            $("#menu_item").addClass("myactive");
+            $("#menu_cat").addClass("myactive");
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -75,23 +68,22 @@
                 serverSide: true,
                 // scrollX: true,
                 ajax: {
-                    url: "{{ route('product.index') }}",
+                    url: "{{ route('cat.index') }}",
                     type: 'GET'
                 },
                 columns: [
                
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
-                    {data: 'date', name: 'date'},
-                    {data: 'barcode', name: 'barcode'},
-                    {data: 'ref_name', name: 'ref_name'},
-                    {data: 'product_name', name: 'product_name'},
-                    {data: 'cat_name', name: 'category.name'},
-                    {data: 'cost', name: 'cost'},
-                    {data: 'price', name: 'price'},
-                    {data: 'unit_name', name: 'unit.name'},
-                    {data: 'income', name: 'income'},
+                    {data: 'category', name: 'category'},
                     {data: 'note', name: 'note'},
-                    {data: 'fname', name: 'users.name'},
+                    {
+                        data: "fname",
+                        render: function (data, type, row) {
+                        return row.fname + ' ' + row.lname ;
+                        
+                        }
+                        
+                    },
                     
                     {
                         data: 'action', 
