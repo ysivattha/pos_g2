@@ -106,7 +106,7 @@
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="{{ route('stockin.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stockin.index') }}" class="nav-link" id='menu_stockin'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock In {{-- {{__('lb.roles')}} --}}
                                     </a>
