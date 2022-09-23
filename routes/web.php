@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\StockAdjustController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -256,27 +257,36 @@ Route::group(['middleware' => 'auth'], function () {
   // stock out
   Route::get('stockout', 'StockOutController@index')->name('stockout.index');
   //unit
-  Route::get('unit', 'UnitController@index')->name('unit.index');
+  Route::get('/unit', 'UnitController@index')->name('unit.index');
   //stock adjust
-  Route::get('adjust', 'AdjustController@index')->name('adjust.index');
+  Route::get('adjust', 'StockAdjustController@index')->name('stock_adjust.index');
   //stock balance
-  Route::get('stock-balance', 'StockBalanceController@index')->name('balance.index');
+  Route::get('/stock-balance', 'StockBalanceController@index')->name('stock_balance.index');
   // type customer
-  Route::get('type-customer', 'TypeCustomerController@index')->name('type.index');
+  Route::get('/customer-type', 'TypeCustomerController@index')->name('cusomer_type.index');
   //customer
-  Route::get('customer', 'CustomerController@index')->name('customer.index');
+  Route::get('/customer', 'CustomerController@index')->name('customer.index');
   //category
-  Route::get('category',[CategoryController::class,'index'])->name('category.index');
+  Route::get('/category',[CategoryController::class,'index'])->name('category.index');
  //supplier_ type
- Route::get('supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
+ Route::get('/supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
  //supplier
- Route::get('supplier', 'SupplierController@index')->name('supplier.index');
+ Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
 
- Route::post('stockin', 'StockInController@store')->name('stockin.store');
- Route::post('stockout', 'StockOutController@store')->name('stockout.store');
+ Route::post('/stockin', 'StockInController@store')->name('stockin.store');
+ Route::post('/stockout', 'StockOutController@store')->name('stockout.store');
 
  Route::get('/product', [ProductController::class,'index'])->name('product.index');
-
+ //Hr
+ Route::get('/hr-sex', 'HrController@index')->name('hr.index');
+  //Hr
+  Route::get('/hr-prosition', 'HrPositionController@index')->name('hr_position.index');
+   //Hr-status
+   Route::get('/hr-status', 'HrStatusController@index')->name('hr_status.index');
+    //Hr-department
+    Route::get('/hr-department', 'HrDepartmentController@index')->name('hr_department.index');
+    //Hr-department
+    Route::get('/hr-employee', 'HrEmployeeController@index')->name('hr_employ.index');
 });
 
  

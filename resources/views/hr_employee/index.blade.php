@@ -23,7 +23,7 @@
         <div class="card-body">
             @component('coms.alert')
             @endcomponent
-            <table class="table table-sm table-bordered datatable" id='dataTable' style="width: 100%">
+            <table class="table table-sm table-bordered datatable" id='data_employee' style="width: 100%">
                 <thead class="bg-light">
                     <tr>
                         {{-- <th>
@@ -32,15 +32,13 @@
                        
                         <th>{{__('lb.id')}}</th>
                         <th>{{__('lb.date')}}</th>
-                        {{-- <th>{{__('lb.image')}}</th> --}}
-                        <th>{{__('lb.barcode')}}</th>
-                        <th>{{__('lb.ref_name')}}</th>
-                        <th>{{__('lb.product_name')}}</th>
-                        <th>{{__('lb.category')}}</th>
-                        <th>{{__('lb.cost')}}</th>
-                        <th>{{__('lb.price')}}</th>
-                        <th>{{__('lb.unit')}}</th>
-                        <th>{{__('lb.income')}}</th>
+                        <th>{{__('lb.name_khmer')}}</th>
+                        <th>{{__('lb.name_english')}}</th>
+                        <th>{{__('lb.sex')}}</th>
+                        <th>{{__('lb.position')}}</th>
+                        <th>{{__('lb.department')}}</th>
+                        <th>{{__('lb.status')}}</th>
+                        <th>{{__('lb.login_id')}}</th>
                         <th>{{__('lb.note')}}</th>
                         <th>{{__('lb.user')}}</th>
                         <th>{{__('lb.action')}}</th>
@@ -59,40 +57,38 @@
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 	<script>
         $(document).ready(function () {
-            $("#sidebar li a").removeClass("active");
-            $("#menu_stock>a").addClass("active");
-            $("#menu_stock").addClass("menu-open");
-            $("#menu_item").addClass("myactive");
+           $("#menu_hr").addClass('menu-open');
+           $("#sub_hr").addClass('active');
+           $("#employee").addClass('myactive');
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
 
-			var table = $('#dataTable').DataTable({
+			var table = $('#data_employee').DataTable({
                 pageLength: 50,
                 processing: true,
                 serverSide: true,
                 // scrollX: true,
                 ajax: {
-                    url: "{{ route('product.index') }}",
+                    url: "{{ route('hr_employ.index') }}",
                     type: 'GET'
                 },
                 columns: [
                
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
                     {data: 'date', name: 'date'},
-                    {data: 'barcode', name: 'barcode'},
-                    {data: 'ref_name', name: 'ref_name'},
-                    {data: 'product_name', name: 'product_name'},
-                    {data: 'cat_name', name: 'category.name'},
-                    {data: 'cost', name: 'cost'},
-                    {data: 'price', name: 'price'},
-                    {data: 'unit_name', name: 'unit.name'},
-                    {data: 'income', name: 'income'},
-                    {data: 'note', name: 'note'},
-                    {data: 'fname', name: 'users.name'},
-                    
+                    {data: 'name_kh', name: 'name_kh'},
+                    {data: 'name_en', name: 'name_en'},
+                    {data: 'sex', name: 'sex'},
+                    {data: 'position', name: 'position'},
+                    {data: 'department', name: 'department'},  
+                    {data: 'status', name: 'status'},
+                    {data: 'login_id', name: 'login_id'},
+                    {data: 'note', name: 'note'},  
+                    {data: 'username', name: 'username'},
+                 
                     {
                         data: 'action', 
                         name: 'action', 

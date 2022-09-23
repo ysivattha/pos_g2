@@ -281,6 +281,11 @@
 <script>
 
 $(document).ready(function () {
+
+    $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_out").addClass('myactive');
+
         $(".chosen-select").chosen({width: "100%"});
         $.ajaxSetup({
         headers: {

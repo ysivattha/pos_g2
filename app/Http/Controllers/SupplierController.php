@@ -20,19 +20,37 @@ class SupplierController extends Controller
     }
     public function index()
     {
-        if (request()->ajax()) {
-          $supplier = DB::table('supplier')
-          ->join('users','supplier.user_id','users.id')
-          ->join('supplier_type','supplier.type_id','supplier_type.id')
-          ->select('supplier.*','supplier_type.s_type','users.username')
-          ->get();
-            return datatables()->of($supplier)
-            ->addIndexColumn()
-            ->addColumn('action', function($supplier) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $supplier->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $supplier->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
-        }
-        
-        return view('supplier.index');
+    
+        if (request()->ajax()) 
+        {
+
+            $data = \DB::table('sup_supplier')
+            ->join('sup_supplier_type','sup_supplier.type_id','sup_supplier_type.id')
+            ->join('users','sup_supplier.user_id','users.id')
+            ->where('sup_supplier.is_active',1)
+            ->select('sup_supplier.*','sup_supplier_type.s_type','users.username')
+            ->get();
+           
+            return datatables()->of($data)
+                // ->addColumn('check', function($row){
+                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
+                //     return $input;
+                // })
+                // ->addColumn('photo', function($row){
+                //     $url = asset($row->photo);
+                //     $img = "<img src='{$url}' width='27'>";
+                //     return $img;
+                // })
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sup_supplier', 'sup_supplier');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+
+            return view('supplier.index');
     }
 }

@@ -20,19 +20,35 @@ class CustomerController extends Controller
 
     public function index()
     {
-        if (request()->ajax()) {
-            $cus = DB::table('customer')
-            ->join('users','customer.user_id','users.id')
-            ->join('type_customer','customer.type_id','customer.id')
-            ->select('customer.*','users.username','type_customer.type')
+    
+        if (request()->ajax()) 
+        {
+
+            $data = \DB::table('cus_customer')
+            ->join('cus_customer_type','cus_customer.type_id','cus_customer_type.id')
+            ->join('users','cus_customer.user_id','users.id')
+            ->select('cus_customer.*','cus_customer_type.c_type','users.username')
             ->get();
-            return datatables()->of($cus)
-            ->addIndexColumn()
-            ->addColumn('action', function($cus) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $cus->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $cus->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
-        }
-        
-        return view('customers.index');
+            return datatables()->of($data)
+                // ->addColumn('check', function($row){
+                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
+                //     return $input;
+                // })
+                // ->addColumn('photo', function($row){
+                //     $url = asset($row->photo);
+                //     $img = "<img src='{$url}' width='27'>";
+                //     return $img;
+                // })
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sto_item', 'sto_item');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+
+            return view('customers.index');
     }
 }

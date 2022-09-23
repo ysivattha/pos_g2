@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class SupplierTypeController extends Controller
+class HrEmployeeController extends Controller
 {
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            app()->setLocale(Auth::user()->language);
+            app()->setLocale(\Auth::user()->language);
             return $next($request);
         });
         
@@ -23,12 +21,16 @@ class SupplierTypeController extends Controller
         if (request()->ajax()) 
         {
 
-            $data = \DB::table('sup_supplier_type')
-            ->join('users','sup_supplier_type.user_id','users.id')
-            ->where('sup_supplier_type.is_active',1)
-            ->select('sup_supplier_type.*','users.username')
+            $data = \DB::table('hr_employee')
+            ->join('hr_sex','hr_employee.sex_id','hr_sex.id')
+            ->join('hr_position','hr_employee.position_id','hr_position.id')
+            ->join('hr_department','hr_employee.department_id','hr_department.id')
+            ->join('hr_employee_status','hr_employee.status_id','hr_employee_status.id')
+            ->join('users','hr_employee.user_id','users.id')
+            ->select('hr_employee.*','hr_sex.sex','hr_employee_status.status','hr_department.department','users.username','hr_position.position')
+            ->where('hr_employee.is_active',1)
             ->get();
-           
+            
             return datatables()->of($data)
                 // ->addColumn('check', function($row){
                 //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
@@ -41,7 +43,7 @@ class SupplierTypeController extends Controller
                 // })
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'sup_supplier_type', 'sup_supplier_type');
+                    $btn = btn_actions($row->id, 'hr-employee', 'hr-employee');
                     return $btn;
                 })
                 
@@ -49,6 +51,6 @@ class SupplierTypeController extends Controller
                 ->make(true);
             }
 
-            return view('supplier-type.index');
+            return view('hr_employee.index');
     }
 }

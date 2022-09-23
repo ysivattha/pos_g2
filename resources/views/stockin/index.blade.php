@@ -250,6 +250,10 @@
 <script>
 
     $(document).ready(function () {
+        $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_in").addClass('myactive');
+
         $(".chosen-select").chosen({width: "100%"});
         $.ajaxSetup({
         headers: {

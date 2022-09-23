@@ -390,5 +390,6 @@ return [
     "create_stock_in"=>"Add Stock In",
     "supplier"=>"Supplier",
     'create_stock_out'=>'Add Stock Out',
-    'exchange_rate'=>'Exchange Rate'
+    'exchange_rate'=>'Exchange Rate',
+    'customer type'=>'Customer Type',
 ];

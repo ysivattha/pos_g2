@@ -27,7 +27,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="balance_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="data_balance">
             <thead>
                 <tr>
                     <th>#</th>
@@ -39,7 +39,6 @@
                     <th>{{__('lb.qty_minus')}}</th>
                     <th>{{__('lb.qty_balance')}}</th>
                     <th>{{__('lb.note')}}</th>
-                   
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
@@ -56,67 +55,64 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // get unit
-    var table = $('#balance_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('balance.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-           
-            {
-                data: 'product_name',
-                name: 'product_name'
-            },
-            {
-                data: 'qty_begin',
-                name: 'qty_begin'
-            },
-            {
-                data: 'qty_add',
-                name: 'qty_add'
-            },
-            {
-                data: 'qty_minus',
-                name: 'qty_minus'
-            },
-            {
-                data: 'qty_balance',
-                name: 'qty_balance'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-          
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
+    $(document).ready(function () {
+        $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_balance").addClass('myactive');
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+        var table = $('#data_balance').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('stock_balance.index') }}",
+                type: 'GET'
+            },
+            columns: [
+           
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                {data: 'date', name: 'date'},
+                {data: 'product_name', name: 'sto_item.product_name'},
+                {data: 'qty_begin', name: 'qty_begin'},
+                {data: 'qty_add', name: 'qty_add'},
+                {data: 'qty_minus', name: 'qty_minus'},
+                {data: 'qty_balance', name: 'qty_balance'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+             
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

@@ -32,8 +32,7 @@
                 <tr>
                     <th>#</th>
                     
-                    <th>{{__('lb.type')}}</th>
-                   
+                    <th>{{__('lb.customer type')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
@@ -48,45 +47,60 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function () {
+        $("#menu_customer").addClass('menu-open');
+        $("#sub_customer").addClass('active');
+        $("#type_customer").addClass('myactive');
+        $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
-    // get unit
-    var table = $('#type_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('type.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'type',
-                name: 'type'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
 
+        var table = $('#type_table').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('cusomer_type.index') }}",
+                type: 'GET'
+            },
+            columns: [
+           
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+               
+                {data: 'c_type', name: 'c_type'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+               
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

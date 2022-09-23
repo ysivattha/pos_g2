@@ -27,7 +27,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="stock_adjust_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="dataTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -50,59 +50,62 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function () {
+        $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_adjust").addClass('myactive');
+        $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
-    // get unit
-    var table = $('#stock_adjust_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('adjust.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-           
-            {
-                data: 'product_name',
-                name: 'product_name'
-            },
-            {
-                data: 'qty_rest',
-                name: 'qty_rest'
-            },
-            {
-                data: 'qty_over',
-                name: 'qty_over'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-          
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
 
+        var table = $('#dataTable').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('stock_adjust.index') }}",
+                type: 'GET'
+            },
+            columns: [
+           
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                {data: 'date', name: 'date'},
+                {data: 'product_name', name: 'sto_item.product_name'},
+                {data: 'qty_rest', name: 'qty_rest'},
+                {data: 'qty_over', name: 'qty_over'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+             
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

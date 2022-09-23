@@ -27,7 +27,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="s_type_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="sub_supplier_type">
             <thead>
                 <tr>
                     <th>#</th>
@@ -51,47 +51,60 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // get unit
-    var table = $('#s_type_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('supplier-type.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 's_type',
-                name: 's_type'
-            },
-           
-            {
-                data: 'note',
-                name: 'note'
-            },
-        
-            {
-                data: 'username',
-                name: 'username'
-            },
-          
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
+    $(document).ready(function () {
+        $("#menu_supplier").addClass('menu-open');
+        $("#sub_supplier").addClass('active');
+        $("#type_supplier").addClass('myactive');
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+        var table = $('#sub_supplier_type').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('supplier-type.index') }}",
+                type: 'GET'
+            },
+            columns: [
+           
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                {data: 's_type', name: 's_type'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+              
+             
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

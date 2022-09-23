@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class SupplierTypeController extends Controller
+class HrController extends Controller
 {
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
-            app()->setLocale(Auth::user()->language);
+            app()->setLocale(\Auth::user()->language);
             return $next($request);
         });
         
@@ -23,11 +21,12 @@ class SupplierTypeController extends Controller
         if (request()->ajax()) 
         {
 
-            $data = \DB::table('sup_supplier_type')
-            ->join('users','sup_supplier_type.user_id','users.id')
-            ->where('sup_supplier_type.is_active',1)
-            ->select('sup_supplier_type.*','users.username')
+            $data = \DB::table('hr_sex')
+            ->join('users','hr_sex.user_id','users.id')
+            ->select('hr_sex.*','users.username')
+            ->where('hr_sex.is_active',1)
             ->get();
+            
            
             return datatables()->of($data)
                 // ->addColumn('check', function($row){
@@ -41,7 +40,7 @@ class SupplierTypeController extends Controller
                 // })
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'sup_supplier_type', 'sup_supplier_type');
+                    $btn = btn_actions($row->id, 'hr', 'hr');
                     return $btn;
                 })
                 
@@ -49,6 +48,6 @@ class SupplierTypeController extends Controller
                 ->make(true);
             }
 
-            return view('supplier-type.index');
+            return view('hr.index');
     }
 }

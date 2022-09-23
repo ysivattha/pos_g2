@@ -17,22 +17,39 @@ class typeCustomerController extends Controller
         });
     }
 
-    // read data
     public function index()
     {
-        if (request()->ajax()) {
-            $type = DB::table('type_customer')
-            ->join('users','type_customer.user_id','users.id')
-            ->select('type_customer.*','users.username')
+    
+        if (request()->ajax()) 
+        {
+
+            $data = \DB::table('cus_customer_type')
+            ->join('users','cus_customer_type.user_id','users.id')
+            ->select('cus_customer_type.*','users.username')
+            ->where('cus_customer_type.is_active',1)
             ->get();
-            return datatables()->of($type)
-            ->addIndexColumn()
-            ->addColumn('action', function($type) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $type->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $type->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
-        }
-        
-        return view('type-customer.index');
+            
+            return datatables()->of($data)
+                // ->addColumn('check', function($row){
+                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
+                //     return $input;
+                // })
+                // ->addColumn('photo', function($row){
+                //     $url = asset($row->photo);
+                //     $img = "<img src='{$url}' width='27'>";
+                //     return $img;
+                // })
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sto_item', 'sto_item');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+
+            return view('type-customer.index');
     }
     
 }

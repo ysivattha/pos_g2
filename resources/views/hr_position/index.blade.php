@@ -31,16 +31,8 @@
                         </th> --}}
                        
                         <th>{{__('lb.id')}}</th>
-                        <th>{{__('lb.date')}}</th>
+                        <th>{{__('lb.positon')}}</th>
                         {{-- <th>{{__('lb.image')}}</th> --}}
-                        <th>{{__('lb.barcode')}}</th>
-                        <th>{{__('lb.ref_name')}}</th>
-                        <th>{{__('lb.product_name')}}</th>
-                        <th>{{__('lb.category')}}</th>
-                        <th>{{__('lb.cost')}}</th>
-                        <th>{{__('lb.price')}}</th>
-                        <th>{{__('lb.unit')}}</th>
-                        <th>{{__('lb.income')}}</th>
                         <th>{{__('lb.note')}}</th>
                         <th>{{__('lb.user')}}</th>
                         <th>{{__('lb.action')}}</th>
@@ -59,10 +51,9 @@
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 	<script>
         $(document).ready(function () {
-            $("#sidebar li a").removeClass("active");
-            $("#menu_stock>a").addClass("active");
-            $("#menu_stock").addClass("menu-open");
-            $("#menu_item").addClass("myactive");
+           $("#menu_hr").addClass('menu-open');
+           $("#sub_hr").addClass('active');
+           $("#position").addClass('myactive');
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -75,24 +66,15 @@
                 serverSide: true,
                 // scrollX: true,
                 ajax: {
-                    url: "{{ route('product.index') }}",
+                    url: "{{ route('hr_position.index') }}",
                     type: 'GET'
                 },
                 columns: [
                
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
-                    {data: 'date', name: 'date'},
-                    {data: 'barcode', name: 'barcode'},
-                    {data: 'ref_name', name: 'ref_name'},
-                    {data: 'product_name', name: 'product_name'},
-                    {data: 'cat_name', name: 'category.name'},
-                    {data: 'cost', name: 'cost'},
-                    {data: 'price', name: 'price'},
-                    {data: 'unit_name', name: 'unit.name'},
-                    {data: 'income', name: 'income'},
+                    {data: 'position', name: 'position'},
                     {data: 'note', name: 'note'},
-                    {data: 'fname', name: 'users.name'},
-                    
+                    {data: 'username', name: 'username'},  
                     {
                         data: 'action', 
                         name: 'action', 

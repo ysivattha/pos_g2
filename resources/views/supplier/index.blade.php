@@ -27,7 +27,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="supplier_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="data_supplier">
             <thead>
                 <tr>
                     <th>#</th>
@@ -39,7 +39,6 @@
                     <th>{{__('lb.type')}}</th>
                     <th>{{__('lb.address')}}</th>
                     <th>{{__('lb.note')}}</th>
-                   
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
@@ -56,67 +55,64 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // get unit
-    var table = $('#supplier_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('supplier.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-           
-            {
-                data: 'company_name',
-                name: 'company_name'
-            },
-            {
-                data: 'contact_name',
-                name: 'contact_name'
-            },
-            {
-                data: 'phone',
-                name: 'phone'
-            },
-            {
-                data: 's_type',
-                name: 's_type'
-            },
-            {
-                data: 'address',
-                name: 'address'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-          
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
+    $(document).ready(function () {
+        $("#menu_supplier").addClass('menu-open');
+        $("#sub_supplier").addClass('active');
+        $("#supplier").addClass('myactive');
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+        var table = $('#data_supplier').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('supplier.index') }}",
+                type: 'GET'
+            },
+            columns: [
+           
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                {data: 'date', name: 'date'},
+                {data: 'company_name', name: 'company_name'},
+                {data: 'contact_name', name: 'contact_name'},
+                {data: 'phone', name: 'phone'},
+                {data: 's_type', name: 'sup_supplier_type.s_type'},
+                {data: 'address', name: '.address'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+             
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

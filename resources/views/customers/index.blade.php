@@ -55,66 +55,65 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function () {
+       
+        $("#menu_customer").addClass('menu-open');
+        $("#sub_customer").addClass('active');
+        $("#customer").addClass('myactive');
+        $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
-    // get unit
-    var table = $('#customer_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('customer.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-            {
-                data: 'company_name',
-                name: 'company_name'
-            },
-            {
-                data: 'contact_name',
-                name: 'contact_name'
-            },
-            {
-                data: 'phone',
-                name: 'phone'
-            },
-            {
-                data: 'type',
-                name: 'type'
-            },
-            {
-                data: 'address',
-                name: 'address'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
 
-            {
-                data: 'username',
-                name: 'username'
+        var table = $('#customer_table').DataTable({
+            pageLength: 50,
+            processing: true,
+            serverSide: true,
+            // scrollX: true,
+            ajax: {
+                url: "{{ route('customer.index') }}",
+                type: 'GET'
             },
+            columns: [
            
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    })
-
+                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                {data: 'date', name: 'date'},
+                {data: 'company_name', name: 'company_name'},
+                {data: 'contact_name', name: 'contact_name'},
+                {data: 'phone', name: 'phone'},
+                {data: 'c_type', name: 'cus_customer.c_type'},
+                {data: 'address', name: 'address'},
+                {data: 'note', name: 'note'},
+                {data: 'username', name: 'users.username'},
+                
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: false, 
+                    searchable: false
+                },
+            ],
+            "initComplete" : function () {
+            $('.dataTables_scrollBody thead tr').addClass('hidden');
+        }
+                    
+                });
+    });
+    // function edit(id, obj)
+    // {
+    //     $('#esms').html('');
+    //     let tbl = $(obj).attr('table');
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+    //         success: function(sms)
+    //         {
+    //             let data = JSON.parse(sms);
+    //             $('#eid').val(data.id);
+    //             $('#ename').val(data.name);
+    //         }
+    //     });
+    // }
 </script>
 @endsection

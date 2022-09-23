@@ -17,22 +17,40 @@ class CategoryController extends Controller
         });
     }
 
-    // read data
+  
+
     public function index()
     {
-        if (request()->ajax()) {
-            $cate = DB::table('category')
-            ->join('users','category.user_id','users.id')
-            ->select('category.*','users.username')
+    
+        if (request()->ajax()) 
+        {
+
+            $data = DB::table('sto_category')
+            ->join('users','sto_category.user_id','users.id')
+            ->select('sto_category.*','users.username')
+            ->where('sto_category.is_active',1)
             ->get();
-            return datatables()->of($cate)
-            ->addIndexColumn()
-            ->addColumn('action', function($cate) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $cate->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $cate->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
-        }
-        
-        return view('category.index');
+            return datatables()->of($data)
+                // ->addColumn('check', function($row){
+                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
+                //     return $input;
+                // })
+                // ->addColumn('photo', function($row){
+                //     $url = asset($row->photo);
+                //     $img = "<img src='{$url}' width='27'>";
+                //     return $img;
+                // })
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sto_category', 'sto_category');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
+            }
+
+            return view('category.index');
     }
   
 
