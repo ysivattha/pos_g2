@@ -30,6 +30,7 @@ class CategoryController extends Controller
             ->select('sto_category.*','users.username')
             ->where('sto_category.is_active',1)
             ->get();
+<<<<<<< HEAD
             return datatables()->of($data)
                 // ->addColumn('check', function($row){
                 //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
@@ -51,6 +52,18 @@ class CategoryController extends Controller
             }
 
             return view('category.index');
+=======
+            return datatables()->of($cate)
+            ->addIndexColumn()
+            ->addColumn('action', function($cate) {
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" 
+                onclick="editData('. $cate->id .')"><i class="fa fa-edit"></i> Edit</a>' . 
+                ' <a class="btn btn-danger btn-xs rounded-0 text-white" 
+                onclick="deleteData('. $cate->id .')"><i class="fa fa-trash"></i> Delete</a>';
+            })->make(true);
+        }
+        return view('category.index');
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
     }
   
 

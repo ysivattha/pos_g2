@@ -1,5 +1,11 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\CategController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -277,6 +283,7 @@ Route::group(['middleware' => 'auth'], function () {
  Route::post('/stockout', 'StockOutController@store')->name('stockout.store');
 
  Route::get('/product', [ProductController::class,'index'])->name('product.index');
+<<<<<<< HEAD
  //Hr
  Route::get('/hr-sex', 'HrController@index')->name('hr.index');
   //Hr
@@ -287,6 +294,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/hr-department', 'HrDepartmentController@index')->name('hr_department.index');
     //Hr-department
     Route::get('/hr-employee', 'HrEmployeeController@index')->name('hr_employ.index');
+=======
+ Route::get('/cat', [CategController::class,'index'])->name('cat.index');
+
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
 });
 
  

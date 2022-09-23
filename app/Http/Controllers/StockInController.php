@@ -20,26 +20,23 @@ class StockInController extends Controller
     }
     public function index()
     {
-        if (request()->ajax()) {
-            $stock = DB::table('sto_stock_in')
-            ->join('users','sto_stock_in.user','users.id')
-            ->join('sup_supplier','sto_stock_in.supplier','sup_supplier.id')
-            ->select('sto_stock_in.*','users.username','sup_supplier.contact_name')
+        if (request()->ajax()) 
+        {
+            $data = \DB::table('sto_stock_in')
+            ->leftjoin('users' , 'sto_stock_in.user','users.id')
+            ->select('sto_stock_in.*','users.username as uname')
             ->get();
-            return datatables()->of($stock)
-            ->addIndexColumn()
-            ->addColumn('action', function($stock) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $stock->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $stock->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
+            return datatables()->of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = btn_actions($row->id, 'sto_stock_in', 'sto_stock_in');
+                    return $btn;
+                })
+                
+                ->rawColumns(['action'])
+                ->make(true);
         }
-
-        $data['suppliers'] = DB::table('sup_supplier')->get();
-        $data['emps']=DB::table('hr_employee')
-        ->where('is_active',1)->get();
-
-        
-        
-        return view('stockin.index' , $data);
+        return view('stockin.index');
     }
 
     public function store(Request $r)

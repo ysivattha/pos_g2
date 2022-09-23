@@ -44,6 +44,7 @@
 
 @section('js')
 <script>
+<<<<<<< HEAD
     $(document).ready(function () {
         $("#menu_stock").addClass('menu-open');
         $("#item").addClass('active');
@@ -53,6 +54,47 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+=======
+         
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // get category
+    var table = $('#cate_table').DataTable({
+        responsive: true,
+        autoWidth: false,
+        ajax: {
+            url: "{{ route('category.index') }}",
+            type: 'GET'
+        },
+        columns: [
+            {
+                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+            },
+            {
+                data: 'category',
+                name: 'category'
+            },
+            {
+                data: 'note',
+                name: 'note'
+            },
+            {
+                data: 'username',
+                name: 'username'
+            },
+           
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ],
+    })
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
 
         var table = $('#data_cate').DataTable({
             pageLength: 50,
@@ -101,25 +143,6 @@
     // }
 </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

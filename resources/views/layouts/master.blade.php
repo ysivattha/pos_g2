@@ -106,7 +106,11 @@
                                 </li>
                               
                                 <li class="nav-item">
+<<<<<<< HEAD
                                     <a href="{{ route('stockin.index') }}" class="nav-link" id='stock_in'>
+=======
+                                    <a href="{{ route('stockin.index') }}" class="nav-link" id='menu_stockin'>
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock In {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -134,7 +138,11 @@
                                 </li>
 
                                 <li class="nav-item">
+<<<<<<< HEAD
                                     <a href="{{ route('category.index') }}" class="nav-link" id='categories'>
+=======
+                                    <a href="{{ route('cat.index') }}" class="nav-link" id='menu_cat'>
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Category {{-- {{__('lb.roles')}} --}}
                                     </a>

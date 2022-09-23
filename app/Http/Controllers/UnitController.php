@@ -20,6 +20,7 @@ class UnitController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
     
         if (request()->ajax()) 
         {
@@ -39,6 +40,16 @@ class UnitController extends Controller
                 //     $img = "<img src='{$url}' width='27'>";
                 //     return $img;
                 // })
+=======
+        if (request()->ajax()) 
+        {
+            $data = \DB::table('sto_unit')
+            ->where('sto_unit.is_active',1)
+            ->leftjoin('users','sto_unit.user_id','users.id')
+            ->select('sto_unit.*','users.first_name as fname','users.last_name as lname')
+            ->get();
+            return datatables()->of($data)
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn = btn_actions($row->id, 'sto_unit', 'sto_unit');
@@ -47,8 +58,17 @@ class UnitController extends Controller
                 
                 ->rawColumns(['action'])
                 ->make(true);
+<<<<<<< HEAD
             }
 
             return view('unit.index');
+=======
+        }
+        return view('unit.index');
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
     }
+
+
+
+
 }

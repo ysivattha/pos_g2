@@ -47,6 +47,7 @@
 @endsection
 
 @section('js')
+<<<<<<< HEAD
 <script>
     $(document).ready(function () {
         $("#menu_stock").addClass('menu-open');
@@ -104,4 +105,52 @@
     //     });
     // }
 </script>
+=======
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
+	<script>
+        $(document).ready(function () {
+            $("#sidebar li a").removeClass("active");
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_unit").addClass("myactive");
+            $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+			var table = $('#dataTable').DataTable({
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                // scrollX: true,
+                ajax: {
+                    url: "{{ route('unit.index') }}",
+                    type: 'GET'
+                },
+                columns: [
+                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                    {data: 'unit', name: 'unit'},
+                    {data: 'note', name: 'note'},
+                    {
+                        data: "fname",
+                        render: function (data, type, row) {
+                        return row.fname + ' ' + row.lname ;
+                        }
+                    },
+                    {
+                        data: 'action', 
+                        name: 'action', 
+                        orderable: false, 
+                        searchable: false
+                    },
+                ],
+                "initComplete" : function () {
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
+                        
+                    });
+        });
+    </script>
+>>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
 @endsection
