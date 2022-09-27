@@ -48,6 +48,7 @@
 
 @section('js')
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
     $(document).ready(function () {
         $("#menu_stock").addClass('menu-open');
@@ -114,43 +115,56 @@
             $("#menu_stock").addClass("menu-open");
             $("#menu_unit").addClass("myactive");
             $.ajaxSetup({
+=======
+<script>
+         
+    $.ajaxSetup({
+>>>>>>> parent of b04d52fc (22-09-2022, 8:45PM)
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-        });
-
-			var table = $('#dataTable').DataTable({
-                pageLength: 50,
-                processing: true,
-                serverSide: true,
-                // scrollX: true,
-                ajax: {
-                    url: "{{ route('unit.index') }}",
-                    type: 'GET'
-                },
-                columns: [
-                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
-                    {data: 'unit', name: 'unit'},
-                    {data: 'note', name: 'note'},
-                    {
-                        data: "fname",
-                        render: function (data, type, row) {
-                        return row.fname + ' ' + row.lname ;
-                        }
-                    },
-                    {
-                        data: 'action', 
-                        name: 'action', 
-                        orderable: false, 
-                        searchable: false
-                    },
-                ],
-                "initComplete" : function () {
-                $('.dataTables_scrollBody thead tr').addClass('hidden');
+    });
+    // get unit
+    var table = $('#unit_table').DataTable({
+        responsive: true,
+        autoWidth: false,
+        ajax: {
+            url: "{{ route('unit.index') }}",
+            type: 'GET'
+        },
+        columns: [
+            {
+                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+            },
+            {
+                data: 'unit',
+                name: 'unit'
+            },
+            {
+                data: 'note',
+                name: 'note'
+            },
+            {
+                data: 'username',
+                name: 'username'
+            },
+           
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
             }
+<<<<<<< HEAD
                         
                     });
         });
     </script>
 >>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+=======
+        ],
+    })
+
+</script>
+>>>>>>> parent of b04d52fc (22-09-2022, 8:45PM)
 @endsection

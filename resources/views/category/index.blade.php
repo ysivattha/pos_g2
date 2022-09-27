@@ -61,7 +61,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    // get category
+    // get unit
     var table = $('#cate_table').DataTable({
         responsive: true,
         autoWidth: false,
@@ -143,6 +143,25 @@
     // }
 </script>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
