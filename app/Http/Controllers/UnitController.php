@@ -21,7 +21,6 @@ class UnitController extends Controller
     public function index()
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
     
         if (request()->ajax()) 
         {
@@ -64,21 +63,12 @@ class UnitController extends Controller
 
             return view('unit.index');
 =======
-=======
-        if (request()->ajax()) {
-            $unit = DB::table('unit')
-            ->join('users','unit.user_id','users.id')
-            ->select('unit.*','users.username')
-            ->get();
-            return datatables()->of($unit)
-            ->addIndexColumn()
-            ->addColumn('action', function($unit) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $unit->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $unit->id .')"><i class="fa fa-trash"></i> Delete</a>';
-            })->make(true);
->>>>>>> parent of b04d52fc (22-09-2022, 8:45PM)
         }
-        
         return view('unit.index');
 >>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
     }
+
+
+
+
 }

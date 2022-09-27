@@ -72,7 +72,6 @@
                     type: 'GET'
                 },
                 columns: [
-               
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
                     {data: 'category', name: 'category'},
                     {data: 'note', name: 'note'},
@@ -80,11 +79,8 @@
                         data: "fname",
                         render: function (data, type, row) {
                         return row.fname + ' ' + row.lname ;
-                        
                         }
-                        
                     },
-                    
                     {
                         data: 'action', 
                         name: 'action', 
