@@ -106,11 +106,11 @@
                                 </li>
                               
                                 <li class="nav-item">
-<<<<<<< HEAD
+
                                     <a href="{{ route('stockin.index') }}" class="nav-link" id='stock_in'>
-=======
+
                                     <a href="{{ route('stockin.index') }}" class="nav-link" id='menu_stockin'>
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock In {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -138,11 +138,10 @@
                                 </li>
 
                                 <li class="nav-item">
-<<<<<<< HEAD
+
                                     <a href="{{ route('category.index') }}" class="nav-link" id='categories'>
-=======
+
                                     <a href="{{ route('cat.index') }}" class="nav-link" id='menu_cat'>
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Category {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -220,10 +219,6 @@
                                        Type Supplier {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
-
-         
-
-                          
                             </ul>
                         </li>
 
@@ -298,9 +293,9 @@
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('hr_result_type.index') }}" class="nav-link" id='hr_result_type'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Asset List     {{-- {{__('lb.roles')}} --}}
+                                       training Result     {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
                             </ul>
@@ -343,6 +338,12 @@
                                       Position
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('hr_result_type.index') }}" class="nav-link" id='hr_result_type'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       training Result     {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
                               
                                 <li class="nav-item">
                                     <a href="{{ route('hr_department.index') }}" class="nav-link" id='department'>
@@ -353,7 +354,7 @@
                                 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('hr_training.index') }}" class="nav-link" id='training'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Training {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -361,7 +362,7 @@
                                 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="{{ route('hr_traincourse.index') }}" class="nav-link" id="course_training">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Training Course
                                     </a>
@@ -396,7 +397,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('hr_pay_type.index') }}" class="nav-link" id='hr_pay_type'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                         Type Pay    {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -409,9 +410,15 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('hr_payroll.index') }}" class="nav-link" id='hr_payroll'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Type Absent    {{-- {{__('lb.roles')}} --}}
+                                      Payroll {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('hr_payroll.index') }}" class="nav-link" id='hr_payroll'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                      Payroll {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
                             </ul>

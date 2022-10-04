@@ -1,15 +1,12 @@
 <?php
 
-<<<<<<< HEAD
-=======
+
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\StockAdjustController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -283,7 +280,7 @@ Route::group(['middleware' => 'auth'], function () {
  Route::post('/stockout', 'StockOutController@store')->name('stockout.store');
 
  Route::get('/product', [ProductController::class,'index'])->name('product.index');
-<<<<<<< HEAD
+// <<<<<<< HEAD
  //Hr
  Route::get('/hr-sex', 'HrController@index')->name('hr.index');
   //Hr
@@ -294,10 +291,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/hr-department', 'HrDepartmentController@index')->name('hr_department.index');
     //Hr-department
     Route::get('/hr-employee', 'HrEmployeeController@index')->name('hr_employ.index');
-=======
- Route::get('/cat', [CategController::class,'index'])->name('cat.index');
 
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+     //Hr-training course
+     Route::get('/hr-traincourse', 'TrainCourseController@index')->name('hr_traincourse.index');
+      //Hr-training
+      Route::get('/hr-training', 'TrainingController@index')->name('hr_training.index');
+      //Hr-result-type
+    Route::get('/hr-result-type', 'HrResultController@index')->name('hr_result_type.index');
+
+      //Hr-payroll
+     Route::get('/hr-payroll', 'HrPayrollController@index')->name('hr_payroll.index');
+      //Hr-pay-type
+     Route::get('/hr-pay-type', 'HrPayTypeController@index')->name('hr_pay_type.index');
+
+   Route::get('/cat', [CategController::class,'index'])->name('cat.index');
+
+
 });
 
  
