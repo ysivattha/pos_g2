@@ -23,8 +23,10 @@ class StockInController extends Controller
         if (request()->ajax()) 
         {
             $data = \DB::table('sto_stock_in')
-            ->leftjoin('users' , 'sto_stock_in.user','users.id')
-            ->select('sto_stock_in.*','users.username as uname')
+            ->leftjoin('users' , 'sto_stock_in.user_id','users.id')
+            ->leftjoin('sup_supplier','sto_stock_in.supplier_id','sup_supplier.id')
+            ->where('sto_stock_in.is_active',1)
+            ->select('sto_stock_in.*','users.first_name as fname','users.last_name as lname','sup_supplier.contact_name')
             ->get();
             return datatables()->of($data)
                 ->addIndexColumn()

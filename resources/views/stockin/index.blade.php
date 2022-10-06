@@ -31,7 +31,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="stock_in_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="DataTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -78,7 +78,7 @@
         }
     });
 
-    var table = $('#stock_in_table').DataTable({
+    var table = $('#DataTable').DataTable({
         responsive: true,
         autoWidth: false,
         ajax: {
@@ -132,8 +132,8 @@
                 name: 'note'
             },
             {
-                data: 'username',
-                name: 'username'
+                data: 'fname',
+                name: 'fname'
             },
            
             {

@@ -318,9 +318,16 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="{{ route('hr_payroll.index') }}" class="nav-link" id="hr_payroll">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Payroll {{-- {{__('lb.users')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('hr_payroll_detail.index') }}" class="nav-link" id="hr_payroll_detail">
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Payroll Detail {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
@@ -369,9 +376,16 @@
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
-                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                    <a href="{{ route('hr_absent.index') }}" class="nav-link" id='hr_absent'>
+                               <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Absent    {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('hr_absent_type.index') }}" class="nav-link" id='hr_absent_detail'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Absent Detail    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
@@ -409,18 +423,6 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('hr_payroll.index') }}" class="nav-link" id='hr_payroll'>
-                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                      Payroll {{-- {{__('lb.roles')}} --}}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('hr_payroll.index') }}" class="nav-link" id='hr_payroll'>
-                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                      Payroll {{-- {{__('lb.roles')}} --}}
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 
