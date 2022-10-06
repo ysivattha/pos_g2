@@ -47,7 +47,7 @@
                     <th>{{__('lb.paid')}}</th>
                     <th>{{__('lb.rest')}}</th>
                     <th>{{__('lb.note')}}</th>
-                    <th>{{__('lb.username')}}</th>
+                  
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
@@ -336,8 +336,8 @@ $(document).ready(function () {
             },
 
             {
-                data: 'seller_id',
-                name: 'seller_id'
+                data: 'fname',
+                name: 'fname'
             },
             {
                 data: 'paid',
@@ -351,10 +351,7 @@ $(document).ready(function () {
                 data: 'note',
                 name: 'note'
             },
-            {
-                data: 'username',
-                name: 'username'
-            },
+           
            
             {
                 data: 'action',

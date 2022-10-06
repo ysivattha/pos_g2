@@ -291,6 +291,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/hr-department', 'HrDepartmentController@index')->name('hr_department.index');
   //Hr-department
   Route::get('/hr-employee', 'HrEmployeeController@index')->name('hr_employ.index');
+   // hr_employee_file
+   Route::get('/hr-employee-file', 'HrEmployeeFileController@index')->name('hr_employee_file.index');
 
      //Hr-training course
   Route::get('/hr-traincourse', 'TrainCourseController@index')->name('hr_traincourse.index');
@@ -309,6 +311,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/hr-absent-type', 'HrAbsentTypeController@index')->name('hr_absent_type.index');
   // hr_absent
   Route::get('/hr-absent', 'HrAbsentController@index')->name('hr_absent.index');
+  // hr_approved_name
+  Route::get('/hr-approve-name', 'HrApprovedName@index')->name('hr_approved_name.index');
   Route::get('/cat', [CategController::class,'index'])->name('cat.index');
 
 

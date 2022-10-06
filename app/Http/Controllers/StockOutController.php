@@ -22,9 +22,9 @@ class StockOutController extends Controller
     {
         if (request()->ajax()) {
             $stock = DB::table('sto_stock_out')
-            ->join('users','sto_stock_out.user','users.id')
+            ->join('users','sto_stock_out.seller_id','users.id')
             ->join('cus_customer','sto_stock_out.customer_id','cus_customer.id')
-            ->select('sto_stock_out.*','cus_customer.contact_name','users.username')
+            ->select('sto_stock_out.*','cus_customer.contact_name','users.first_name as fname')
             ->get();
             return datatables()->of($stock)
             ->addIndexColumn()
