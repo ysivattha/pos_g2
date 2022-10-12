@@ -23,90 +23,85 @@
 </div>  
 </div>   
 <div class="card">
-	
-	<div class="card-body">
-       @component('coms.alert')
-       @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="data_unit">
-            <thead>
+    <div class="card-body">
+        @component('coms.alert')
+        @endcomponent
+        <table class="table table-sm table-bordered datatable" id='dataTable' style="width: 100%">
+            <thead class="bg-light">
                 <tr>
                     <th>#</th>
-                    
                     <th>{{__('lb.unit')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
-                    <th>{{ __('lb.action') }}</th>
+                    <th>{{__('lb.action')}}</th>
                 </tr>
             </thead>
-            
+          
         </table>
-       
-	</div>
+    </div>
 </div>
 
 @endsection
 
 @section('js')
-<<<<<<< HEAD
-<script>
-    $(document).ready(function () {
-        $("#menu_stock").addClass('menu-open');
-        $("#item").addClass('active');
-        $("#unit").addClass('myactive');
-        $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-        var table = $('#data_unit').DataTable({
-            pageLength: 50,
-            processing: true,
-            serverSide: true,
-            // scrollX: true,
-            ajax: {
-                url: "{{ route('unit.index') }}",
-                type: 'GET'
-            },
-            columns: [
-           
-                {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
-                {data: 'unit', name: 'unit'},
-                {data: 'note', name: 'sto_item.note'},
-              
-                {data: 'username', name: 'users.username'},
-             
-                {
-                    data: 'action', 
-                    name: 'action', 
-                    orderable: false, 
-                    searchable: false
-                },
-            ],
-            "initComplete" : function () {
-            $('.dataTables_scrollBody thead tr').addClass('hidden');
-        }
-                    
+    <script>
+        $(document).ready(function () {
+            $("#menu_stock").addClass('menu-open');
+            $("#item").addClass('active');
+            $("#unit").addClass('myactive');
+            $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
                 });
-    });
-    // function edit(id, obj)
-    // {
-    //     $('#esms').html('');
-    //     let tbl = $(obj).attr('table');
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
-    //         success: function(sms)
-    //         {
-    //             let data = JSON.parse(sms);
-    //             $('#eid').val(data.id);
-    //             $('#ename').val(data.name);
-    //         }
-    //     });
-    // }
-</script>
-=======
-<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
+
+            var table = $('#data_unit').DataTable({
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                // scrollX: true,
+                ajax: {
+                    url: "{{ route('unit.index') }}",
+                    type: 'GET'
+                },
+                columns: [
+            
+                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                    {data: 'unit', name: 'unit'},
+                    {data: 'note', name: 'sto_item.note'},
+                
+                    {data: 'username', name: 'users.username'},
+                
+                    {
+                        data: 'action', 
+                        name: 'action', 
+                        orderable: false, 
+                        searchable: false
+                    },
+                ],
+                "initComplete" : function () {
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
+                        
+                    });
+        });
+        // function edit(id, obj)
+        // {
+        //     $('#esms').html('');
+        //     let tbl = $(obj).attr('table');
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
+        //         success: function(sms)
+        //         {
+        //             let data = JSON.parse(sms);
+        //             $('#eid').val(data.id);
+        //             $('#ename').val(data.name);
+        //         }
+        //     });
+        // }
+    </script>
+    <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 	<script>
         $(document).ready(function () {
             $("#sidebar li a").removeClass("active");
@@ -152,5 +147,4 @@
                     });
         });
     </script>
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
 @endsection

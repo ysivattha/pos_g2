@@ -3,44 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Department;
-use App\Models\Section;
-use DB;
-use DataTables;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Services\DataTable;
+
 class DepartmentController extends Controller
 {
-    public function __construct()
+
+
+    public function index()
     {
-        $this->middleware(function ($request, $next) {
-            app()->setLocale(Auth::user()->language);
-            return $next($request);
-        });
-    }
-    public function index(Request $r)
-    {
-        if(!check('department', 'l')){
-            return view('permissions.no');
-        }
-        
-        if ($r->ajax()) 
-        {
-            $data = Department::where('active', 1);
-            return Datatables::of($data)
-                ->addColumn('check', function($row){
-                    $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
-                    return $input;
-                })
+        if (request()->ajax()) {
+            $data = DB::table('hr_department')
+            ->where('hr_department.is_active', 1)
+            ->leftjoin('users', 'hr_department.user_id', 'users.id')
+            ->select('hr_department.*', 'users.first_name as fname', 'users.last_name as lname')
+            ->get();
+
+            return datatables()->of($data)
                 ->addIndexColumn()
-              
                 ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'departments', 'department');
+                $btn = btn_actions($row->id, 'hr_department', 'hr_department');
                     return $btn;
-                })
-                ->rawColumns(['action', 'check'])
+            })
+                ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('departments.index');
+        return view('hr_department.index');
     }
   
    

@@ -287,8 +287,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/hr-prosition', 'HrPositionController@index')->name('hr_position.index');
   //Hr-status
   Route::get('/hr-status', 'HrStatusController@index')->name('hr_status.index');
-//Hr-department
-  Route::get('/hr-department', 'HrDepartmentController@index')->name('hr_department.index');
+  //Hr-department
+  Route::get('/hr_department', 'DepartmentController@index')->name('hr_department.index');
   //Hr-department
   Route::get('/hr-employee', 'HrEmployeeController@index')->name('hr_employ.index');
    // hr_employee_file

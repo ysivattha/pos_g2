@@ -20,52 +20,26 @@ class UnitController extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
-    
-        if (request()->ajax()) 
-        {
 
+        if (request()->ajax()) {
             $data = DB::table('sto_unit')
-            ->join('users','sto_unit.user_id','users.id')
-            ->select('sto_unit.*','users.username')
-            ->where('sto_unit.is_active',1)
+                ->where('sto_unit.is_active', 1)
+                ->leftjoin('users', 'sto_unit.user_id', 'users.id')
+                ->select('sto_unit.*', 'users.first_name as fname', 'users.last_name as lname')
             ->get();
-            return datatables()->of($data)
-                // ->addColumn('check', function($row){
-                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
-                //     return $input;
-                // })
-                // ->addColumn('photo', function($row){
-                //     $url = asset($row->photo);
-                //     $img = "<img src='{$url}' width='27'>";
-                //     return $img;
-                // })
-=======
-        if (request()->ajax()) 
-        {
-            $data = \DB::table('sto_unit')
-            ->where('sto_unit.is_active',1)
-            ->leftjoin('users','sto_unit.user_id','users.id')
-            ->select('sto_unit.*','users.first_name as fname','users.last_name as lname')
-            ->get();
-            return datatables()->of($data)
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+
+            return datatables()->of($data) 
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'sto_unit', 'sto_unit');
+                $btn = btn_actions($row->id, 'sto_unit', 'sto_unit');
                     return $btn;
-                })
-                
+            })
                 ->rawColumns(['action'])
                 ->make(true);
-<<<<<<< HEAD
             }
 
-            return view('unit.index');
-=======
-        }
         return view('unit.index');
->>>>>>> b04d52fc42c7f57e44bd13a65b3eb22ae93dde51
+            
     }
 
 

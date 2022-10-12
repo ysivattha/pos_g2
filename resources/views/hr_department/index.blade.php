@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.item')}}
+    {{__('lb.category')}}
 @endsection
 @section('header')
-    {{__('lb.item')}}
+    {{__('lb.category')}}
 @endsection
 @section('content')  
     <div class="toolbox pt-1 pb-1">
-        @cancreate('item')
+        {{-- @cancreate('item')
         <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal'>
             <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
         </button>
@@ -17,7 +17,7 @@
             table='roles' permission='role' token="{{csrf_token()}}">
             <i class="fa fa-trash"></i> {{__('lb.delete')}}
         </button>
-        @endcandelete
+        @endcandelete --}}
     </div>   
     <div class="card">
         <div class="card-body">
@@ -31,11 +31,12 @@
                         </th> --}}
                        
                         <th>{{__('lb.id')}}</th>
-                        <th>{{__('lb.department')}}</th>
+                        <th>{{__('lb.category')}}</th>
                         {{-- <th>{{__('lb.image')}}</th> --}}
                         <th>{{__('lb.note')}}</th>
                         <th>{{__('lb.user')}}</th>
                         <th>{{__('lb.action')}}</th>
+
 
                     </tr>
                 </thead>
@@ -51,9 +52,10 @@
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 	<script>
         $(document).ready(function () {
-           $("#menu_hr").addClass('menu-open');
-           $("#sub_hr").addClass('active');
-           $("#department").addClass('myactive');
+            $("#sidebar li a").removeClass("active");
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_cat").addClass("myactive");
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -70,11 +72,15 @@
                     type: 'GET'
                 },
                 columns: [
-               
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
                     {data: 'department', name: 'department'},
                     {data: 'note', name: 'note'},
-                    {data: 'username', name: 'username'},  
+                    {
+                        data: "fname",
+                        render: function (data, type, row) {
+                        return row.fname + ' ' + row.lname ;
+                        }
+                    },
                     {
                         data: 'action', 
                         name: 'action', 
